@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+*.tlog
+*.pdb
+*.idb
+lfc-editor/Debug/lfc-editor.log
+lfc-editor/Release/lfc-editor.log

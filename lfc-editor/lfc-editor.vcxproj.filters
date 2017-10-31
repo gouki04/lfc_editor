@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{0c47a720-865e-4b5a-9704-85e49329d14a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{24eda790-bb98-4c7a-962f-43326168020c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\event">
+      <UniqueIdentifier>{cd187a95-3b80-4f72-98ac-c3f18422ca85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="window">
+      <UniqueIdentifier>{03fc6088-2f81-4722-b265-d749673ef8d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="entry.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Localization.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TopNTable.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imgui_impl_glfw.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="data\database.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\Date.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\Event.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\FootballClub.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\Goal.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\Match.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\MatchTime.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\Player.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\TwoMatch.hpp">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\InternationalChampionsCup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\PremierLeague.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\PremierLeagueAsiaTrophy.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\UEFAChampionsLeague.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\UEFAEuropaLeague.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\AudiCup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\EFLCup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\FACup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\FriendlyMatch.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="window\AnalyzeMatchWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\EditEventWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\EditPlayerWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_impl_glfw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\fonts\msyh.ttf">
+      <Filter>resources</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data.json">
+      <Filter>resources</Filter>
+    </None>
+    <None Include="localization.json">
+      <Filter>resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

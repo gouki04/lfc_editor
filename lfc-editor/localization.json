@@ -1,0 +1,118 @@
+{
+    "value0": {
+        "translation": [
+            {
+                "key": "name",
+                "value": "名字"
+            },{
+                "key": "begin",
+                "value": "开始"
+            },{
+                "key": "end",
+                "value": "结束"
+            },{
+                "key": "begin",
+                "value": "开始"
+            },{
+                "key": "+ event",
+                "value": "添加事件"
+            },{
+                "key": "match",
+                "value": "比赛"
+            },{
+                "key": "round %d",
+                "value": "第%d轮"
+            },{
+                "key": "play off",
+                "value": "资格赛"
+            },{
+                "key": "first",
+                "value": "首回合"
+            },{
+                "key": "second",
+                "value": "次回合"
+            },{
+                "key": "group state",
+                "value": "小组赛"
+            },{
+                "key": "round of 32",
+                "value": "32强"
+            },{
+                "key": "round of 16",
+                "value": "16强"
+            },{
+                "key": "quarter final",
+                "value": "1/4决赛"
+            },{
+                "key": "semi final",
+                "value": "半决赛"
+            },{
+                "key": "final",
+                "value": "决赛"
+            },{
+                "key": "match time",
+                "value": "时间"
+            },{
+                "key": "side",
+                "value": "主客场"
+            },{
+                "key": "opponent team",
+                "value": "对手"
+            },{
+                "key": "(penalty)",
+                "value": "(点)"
+            },{
+                "key": "pl table position",
+                "value": "排名" 
+            },{
+                "key": "pl table played",
+                "value": "场次" 
+            },{
+                "key": "pl table won/drawn/lost",
+                "value": "胜/平/负" 
+            },{
+                "key": "pl table goals for/against",
+                "value": "进/失球" 
+            },{
+                "key": "pl table points",
+                "value": "积分" 
+            },{
+                "key": "pl table win rate",
+                "value": "胜率" 
+            },{
+                "key": "pl table goal per match",
+                "value": "场均进球" 
+            },{
+                "key": "pl table goal against per match",
+                "value": "场均丢球" 
+            },{
+                "key": "round 2",
+                "value": "第2轮" 
+            },{
+                "key": "top of 64",
+                "value": "64强" 
+            },{
+                "key": "top of 32",
+                "value": "32强" 
+            },{
+                "key": "top of 16",
+                "value": "16强" 
+            },{
+                "key": "semi final first",
+                "value": "半决赛 首回合" 
+            },{
+                "key": "semi final second",
+                "value": "半决赛 次回合" 
+            },{
+                "key": "goal table",
+                "value": "进球榜" 
+            },{
+                "key": "assist table",
+                "value": "助攻榜" 
+            },{
+                "key": "create goal table",
+                "value": "创造进球榜" 
+            }
+        ]
+    }
+}
