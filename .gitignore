@@ -36,3 +36,9 @@
 *.idb
 lfc-editor/Debug/lfc-editor.log
 lfc-editor/Release/lfc-editor.log
+*.db
+*.opendb
+lfc-editor/x64/Release/lfc-editor.log
+*.exp
+*.iobj
+*.ipdb
