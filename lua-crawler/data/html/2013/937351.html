@@ -1,0 +1,581 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>赛事事件</title>
+  
+  <link href="http://pic.gooooal.com/football/uefaevent/css/base.css" rel="stylesheet" type="text/css"/>
+  <link href="http://pic.gooooal.com/football/uefaevent/css/css.css" rel="stylesheet" type="text/css"/>
+  <script src="http://pic.gooooal.com/football/uefaevent/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <script src="http://pic.gooooal.com/football/uefaevent/js/base.js" type="text/javascript"></script>
+  <script src="http://pic.gooooal.com/football/uefaevent/js/lineup.js" type="text/javascript"></script>
+  <script src="http://pic.gooooal.com/football/uefaevent/js/tb_sort.js" type="text/javascript"></script>
+  <script src="http://www.gooooal.com/js/gooooal.ad.js" type="text/javascript"></script>
+  <script src="http://www.gooooal.com/ad/ad_28.js" type="text/javascript"></script>
+</head>
+
+<body class="bodyBg">
+<div class="topBanner" id="div_ad_head" style="display:none;">
+  <ul style="margin-left:15px; width:947px;">
+    <li style="width:200px; line-height:1px;"><div id="ad_hd_3">&nbsp;</div></li>
+    <li><div id="ad_hd_1"></div></li>
+    <li><div id="ad_hd_2"></div></li>
+    <li class="close"><img src="http://pic.gooooal.com/skins/newHeader/ico_close.gif" alt="关闭" title="关闭" style="cursor:pointer;" onclick="_gl.hideAd();"></li>
+  </ul>
+</div>
+<div class="content headTop">
+  <select onchange="chgMatch(this.value);">
+    <option value="937349">英超 01-12 22:05 纽卡斯尔联 vs 曼城</option>
+    <option value="937351" selected>英超 01-13 00:10 斯托克城 vs 利物浦</option>
+  </select>
+  <span class="span">选择场次</span>
+</div>
+<div class="headTop02">
+  <p class="fl margin-left20">2013/14 <a href="http://app.gooooal.com/competition.do?lid=4&sid=2013" target="_blank">英格兰超级联赛</a> 第21轮  <a href="http://app.gooooal.com/globalPlace.do?med=doGlobalPlaceDetail&pid=92" target="_blank">Bet365球场</a></p>
+  <p class="margin-left20 fl">雨</p>
+  <p class="margin-left20 fl">开赛时间 2014年01月13日 00:10</p>
+  
+  
+  <p class="fr margin-right20 lang"><label onclick="chgLang('cn');" class="selected">简体</label> | <label onclick="chgLang('tr');">繁体</label></p>
+</div>
+<div class="matchAd">
+  <div class="adB01">
+    <p><sup>[12]</sup><span onclick="toTeam(2297);">斯托克城</span></p>
+    <p class="font16"><span onclick="toTeam(2297);">Stoke City FC</span></p>
+    <div class="img"><img onclick="toTeam(2297);" src="http://pic.gooooal.com/images/100011/100011302.jpg" class="img"/></div>
+  </div>
+  <div class="adB02">
+    <p class="fin">
+      
+      
+      3 - 5
+      
+    </p>
+    <p class="font14">HT 2 - 2</p>
+    
+    
+  </div>
+  <div class="adB03">
+    <p><span onclick="toTeam(53);">利物浦</span><sup>[6]</sup></p>
+    <p class="font16"><span onclick="toTeam(53);">Liverpool FC</span></p>
+    <div class="img"><img onclick="toTeam(53);" src="http://pic.gooooal.com/images/100011/100011218.jpg" class="img"/></div>
+  </div>
+</div>
+<div class="matchAdFont font13">
+  <p><em class="margin-left15">竞彩足球 [+1] 4.6 7.56 2.6</em><em class="margin-left15">竞彩足球 [+1] 2.65 3.5 2.08</em><em class="margin-left15">北京单场 [+1] 0 0 2.04</em>
+    <em class="margin-left15">亚盘：1.91 受让一球/球半 1.95</em>
+    <em class="margin-left15">欧赔：7.0 4.5 1.35</em>
+    <em class="margin-left15">大小球: 2.5/3</em></p>
+  <p>斯托克城先开球</p>
+</div>
+
+<script type="text/javascript">
+  var _isET = 0;
+  var _hostTeam = ["2297","斯托克城","http://pic.gooooal.com/images/100011/100011302.jpg","","Stoke City FC","1"];
+  var _visitTeam = ["53","利物浦","http://pic.gooooal.com/images/100011/100011218.jpg","","Liverpool FC","1"];
+  var _hostLineup = ["4-5-1",[4,2,3,1]];
+  var _visitLineup = ["4-5-1",[4,2,3,1]];
+  var _hostFirst = [100044640,174817,508846,502700,100006347,113892,100014815,100010651,145375,40721,30712];
+  var _hostSub = [1238,503547,100013877,17055,20364,142345,156752];
+  var _visitFirst = [150392,52101,25907,113710,100008661,452,174671,100050476,100009327,174846,170032];
+  var _visitSub = [100070756,100010244,178792,100003340,100013955,100021675,100033181];
+  var _coachList = ["22971","100033530","",""];
+  var _judgeList = ["100274339","100275256","100274340","","","100274315"];
+  var _logList = [];
+  _logList.push({id:104771780,teamId:53,periodId:0,logId:106,logTime:0,personId:117548,assistId:"",remark:"Daniel Agger",reason:""});
+  _logList.push({id:104771781,teamId:53,periodId:0,logId:106,logTime:0,personId:140200,assistId:"",remark:"Jose Enrique Sanchez Diaz",reason:""});
+  _logList.push({id:104771782,teamId:53,periodId:0,logId:106,logTime:0,personId:180532,assistId:"",remark:"Mamadou Sakho",reason:""});
+  _logList.push({id:104771785,teamId:53,periodId:0,logId:106,logTime:0,personId:100018196,assistId:"",remark:"Sebastian Coates Nion",reason:""});
+  _logList.push({id:104771886,teamId:53,periodId:0,logId:106,logTime:0,personId:100027337,assistId:"",remark:"John Flanagan",reason:""});
+  _logList.push({id:104771890,teamId:53,periodId:0,logId:106,logTime:0,personId:506284,assistId:"",remark:"Joe Allen",reason:""});
+  _logList.push({id:104771499,teamId:53,periodId:100,logId:1,logTime:1920,personId:170032,assistId:"",remark:"路易斯·苏亚雷斯",reason:""});
+  _logList.push({id:104771642,teamId:53,periodId:102,logId:3,logTime:3060,personId:452,assistId:"",remark:"斯蒂文·杰拉德",reason:""});
+  _logList.push({id:104771641,teamId:53,periodId:102,logId:202,logTime:3180,personId:100008661,assistId:"",remark:"阿里·西索科",reason:""});
+  _logList.push({id:104771683,teamId:53,periodId:102,logId:104,logTime:3960,personId:174846,assistId:"",remark:"菲利佩·库蒂尼奥",reason:""});
+  _logList.push({id:104771683,teamId:53,periodId:102,logId:105,logTime:3960,personId:178792,assistId:"",remark:"丹尼尔·斯图里奇",reason:""});
+  _logList.push({id:104771698,teamId:53,periodId:102,logId:1,logTime:4260,personId:170032,assistId:"178792",remark:"Suarez L.",reason:""});
+  _logList.push({id:104771740,teamId:53,periodId:102,logId:1,logTime:5220,personId:178792,assistId:"",remark:"丹尼尔·斯图里奇",reason:""});
+  _logList.push({id:104771858,teamId:2297,periodId:0,logId:106,logTime:0,personId:140326,assistId:"",remark:"Asmir Begovic",reason:""});
+  _logList.push({id:104771860,teamId:2297,periodId:0,logId:106,logTime:0,personId:40322,assistId:"",remark:"Robert Huth",reason:""});
+  _logList.push({id:104771861,teamId:2297,periodId:0,logId:106,logTime:0,personId:89681,assistId:"",remark:"Andy Wilkinson",reason:""});
+  _logList.push({id:104771301,teamId:2297,periodId:100,logId:2,logTime:300,personId:502700,assistId:"",remark:"瑞安·肖克罗斯",reason:""});
+  _logList.push({id:104771521,teamId:2297,periodId:100,logId:1,logTime:2340,personId:30712,assistId:"100010651",remark:"Crouch P.",reason:""});
+  _logList.push({id:104771532,teamId:2297,periodId:100,logId:1,logTime:2700,personId:145375,assistId:"",remark:"查理·亚当",reason:""});
+  _logList.push({id:104771660,teamId:2297,periodId:102,logId:202,logTime:3480,personId:502700,assistId:"",remark:"瑞安·肖克罗斯",reason:""});
+  _logList.push({id:104771726,teamId:2297,periodId:102,logId:104,logTime:4860,personId:100014815,assistId:"",remark:"斯蒂文·恩佐茨",reason:""});
+  _logList.push({id:104771726,teamId:2297,periodId:102,logId:105,logTime:4860,personId:156752,assistId:"",remark:"斯蒂芬·爱尔兰",reason:""});
+  _logList.push({id:104771738,teamId:2297,periodId:102,logId:1,logTime:5100,personId:40721,assistId:"100010651",remark:"Walters J.",reason:""});
+  var _judgePerson = {};
+  _judgePerson["22971"] = {id:22971,name:"M.休斯",imgUrl:"http://pic.gooooal.com/images/100067/100067913.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490317.png"};
+  _judgePerson["100033530"] = {id:100033530,name:"B.罗杰斯",imgUrl:"http://pic.gooooal.com/images/100122/100122259.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490076.png"};
+  _judgePerson["100274315"] = {id:100274315,name:"J.莫斯",imgUrl:"http://pic.gooooal.com/images/101079/101079447.png",countryImg:"http://pic.gooooal.com/images/100490/100490351.png"};
+  _judgePerson["100274339"] = {id:100274339,name:"A.泰勒",imgUrl:"http://pic.gooooal.com/images/101079/101079443.png",countryImg:"http://pic.gooooal.com/images/100490/100490351.png"};
+  _judgePerson["100274340"] = {id:100274340,name:"S.贝克",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png"};
+  _judgePerson["100275256"] = {id:100275256,name:"S.伯特",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png"};
+  var _personList = {};
+  var _personListHost = {};
+  var _personListVisit = {};
+  _personListHost["1238"] = {pid:1238,teamId:2297,name:"T.索伦森",teamNum:"29",posId:"1",posCode:"G",posName:"守门员",clubId:"52535",clubName:"墨尔本城",birthday:"1976-06-12",height:"196",marketValue:"25万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326844.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490094.png",countryName:"丹麦"};
+  _personListHost["17055"] = {pid:17055,teamId:2297,name:"J.彭南特",teamNum:"7",posId:"10",posCode:"M",posName:"中场",clubId:"16956",clubName:"淡滨尼流浪",birthday:"1983-01-15",height:"173",marketValue:"150万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326806.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["20364"] = {pid:20364,teamId:2297,name:"M.埃瑟林顿",teamNum:"26",posId:"10",posCode:"M",posName:"中场",clubId:"2297",clubName:"斯托克城",birthday:"1981-08-14",height:"178",marketValue:"150万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326842.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["22971"] = {pid:22971,teamId:2297,name:"M.休斯",teamNum:"",posId:"18",posCode:"Head Coach",posName:"主教练",clubId:"",clubName:"",birthday:"1963-11-01",height:"178",marketValue:"",imgUrl:"http://pic.gooooal.com/images/100067/100067913.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490317.png",countryName:"威尔士"};
+  _personListHost["30712"] = {pid:30712,teamId:2297,name:"P.克劳奇",teamNum:"25",posId:"17",posCode:"F",posName:"前锋",clubId:"2297",clubName:"斯托克城",birthday:"1981-01-30",height:"201",marketValue:"200万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326841.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["40322"] = {pid:40322,teamId:2297,name:"R.胡特",teamNum:"4",posId:"2",posCode:"D",posName:"后卫",clubId:"92",clubName:"莱切斯特城",birthday:"1984-08-18",height:"191",marketValue:"500万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326805.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490095.png",countryName:"德国"};
+  _personListHost["40721"] = {pid:40721,teamId:2297,name:"J.沃尔特斯",teamNum:"19",posId:"17",posCode:"F",posName:"前锋",clubId:"280",clubName:"伯恩利",birthday:"1983-09-20",height:"183",marketValue:"350万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326855.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490045.png",countryName:"爱尔兰"};
+  _personListHost["89681"] = {pid:89681,teamId:2297,name:"A.威尔金森",teamNum:"28",posId:"2",posCode:"D",posName:"后卫",clubId:"2297",clubName:"斯托克城",birthday:"1984-08-06",height:"183",marketValue:"88万null",imgUrl:"http://pic.gooooal.com/images/100326/100326843.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["90601"] = {pid:90601,teamId:2297,name:"P.奥德姆温吉",teamNum:"9",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1981-07-15",height:"181",marketValue:"150万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490257.png",countryName:"尼日利亚"};
+  _personListHost["113892"] = {pid:113892,teamId:2297,name:"G.惠兰",teamNum:"6",posId:"10",posCode:"M",posName:"中场",clubId:"70",clubName:"阿斯顿维拉",birthday:"1984-01-13",height:"180",marketValue:"250万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326837.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490045.png",countryName:"爱尔兰"};
+  _personListHost["117259"] = {pid:117259,teamId:2297,name:"C.杰罗梅",teamNum:"33",posId:"17",posCode:"F",posName:"前锋",clubId:"291",clubName:"诺维奇城",birthday:"1986-08-14",height:"185",marketValue:"250万欧元",imgUrl:"http://pic.gooooal.com/images/100098/100098953.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["117964"] = {pid:117964,teamId:2297,name:"K.琼斯",teamNum:"9",posId:"17",posCode:"F",posName:"前锋",clubId:"95621",clubName:"亚特兰大联",birthday:"1984-10-05",height:"187",marketValue:"90万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326808.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490309.png",countryName:"特立尼达和多巴哥"};
+  _personListHost["140326"] = {pid:140326,teamId:2297,name:"A.贝戈维奇",teamNum:"1",posId:"1",posCode:"G",posName:"守门员",clubId:"7146",clubName:"伯恩茅斯",birthday:"1987-06-20",height:"198",marketValue:"1200万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326804.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490082.png",countryName:"波黑"};
+  _personListHost["142345"] = {pid:142345,teamId:2297,name:"W.帕拉西奥斯",teamNum:"8",posId:"10",posCode:"M",posName:"中场",clubId:"2297",clubName:"斯托克城",birthday:"1984-07-29",height:"181",marketValue:"150万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326807.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490142.png",countryName:"洪都拉斯"};
+  _personListHost["145375"] = {pid:145375,teamId:2297,name:"C.亚当",teamNum:"16",posId:"10",posCode:"M",posName:"中场",clubId:"2297",clubName:"斯托克城",birthday:"1985-12-10",height:"185",marketValue:"450万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326853.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490294.png",countryName:"苏格兰"};
+  _personListHost["156752"] = {pid:156752,teamId:2297,name:"S.爱尔兰",teamNum:"32",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1986-08-22",height:"173",marketValue:"200万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326849.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490045.png",countryName:"爱尔兰"};
+  _personListHost["174817"] = {pid:174817,teamId:2297,name:"E.彼得斯",teamNum:"3",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1988-08-07",height:"183",marketValue:"300万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326835.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490139.png",countryName:"荷兰"};
+  _personListHost["176223"] = {pid:176223,teamId:2297,name:"凯特利",teamNum:"19",posId:"10",posCode:"M",posName:"中场",clubId:"2296",clubName:"南安联",birthday:"1986-01-24",height:"173",marketValue:"100万欧元",imgUrl:"http://pic.gooooal.com/images/100127/100127668.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["180738"] = {pid:180738,teamId:2297,name:"M.埃杜",teamNum:"13",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1986-04-18",height:"183",marketValue:"60万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326851.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490223.png",countryName:"美国"};
+  _personListHost["475253"] = {pid:475253,teamId:2297,name:"J.圭德蒂",teamNum:"23",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1992-04-15",height:"185",marketValue:"800万欧元",imgUrl:"http://pic.gooooal.com/images/100324/100324563.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490262.png",countryName:"瑞典"};
+  _personListHost["502700"] = {pid:502700,teamId:2297,name:"R.肖克罗斯",teamNum:"17",posId:"2",posCode:"D",posName:"后卫",clubId:"2297",clubName:"斯托克城",birthday:"1987-10-04",height:"191",marketValue:"900万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326854.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["503547"] = {pid:503547,teamId:2297,name:"绍特顿",teamNum:"30",posId:"2",posCode:"D",posName:"后卫",clubId:"93",clubName:"米德尔斯堡",birthday:"1988-09-30",height:"189",marketValue:"75万欧元",imgUrl:"http://pic.gooooal.com/images/100023/100023595.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["508846"] = {pid:508846,teamId:2297,name:"M.威尔森",teamNum:"12",posId:"2",posCode:"D",posName:"后卫",clubId:"7146",clubName:"伯恩茅斯",birthday:"1987-08-17",height:"188",marketValue:"400万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326850.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490045.png",countryName:"爱尔兰"};
+  _personListHost["100006263"] = {pid:100006263,teamId:2297,name:"B.谢亚",teamNum:"11",posId:"10",posCode:"M",posName:"中场",clubId:"27974",clubName:"温哥华白帽",birthday:"1990-02-28",height:"190",marketValue:"65万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326838.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490223.png",countryName:"美国"};
+  _personListHost["100006347"] = {pid:100006347,teamId:2297,name:"G.卡梅隆",teamNum:"20",posId:"2",posCode:"D",posName:"后卫",clubId:"2297",clubName:"斯托克城",birthday:"1985-07-11",height:"190",marketValue:"300万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326856.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490223.png",countryName:"美国"};
+  _personListHost["100010651"] = {pid:100010651,teamId:2297,name:"M.阿瑙托维奇",teamNum:"10",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1989-04-19",height:"193",marketValue:"800万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326845.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490056.png",countryName:"奥地利"};
+  _personListHost["100013427"] = {pid:100013427,teamId:2297,name:"O.阿萨迪",teamNum:"24",posId:"17",posCode:"F",posName:"前锋",clubId:"728",clubName:"特温特",birthday:"1988-08-15",height:"175",marketValue:"700万欧元",imgUrl:"http://pic.gooooal.com/images/100127/100127392.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490240.png",countryName:"摩洛哥"};
+  _personListHost["100013877"] = {pid:100013877,teamId:2297,name:"M.穆涅萨",teamNum:"5",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1992-03-27",height:"180",marketValue:"300万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326836.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490328.png",countryName:"西班牙"};
+  _personListHost["100014815"] = {pid:100014815,teamId:2297,name:"S.恩宗齐",teamNum:"15",posId:"10",posCode:"M",posName:"中场",clubId:"166",clubName:"塞维利亚",birthday:"1988-12-15",height:"196",marketValue:"3000万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326852.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490107.png",countryName:"法国"};
+  _personListHost["100026444"] = {pid:100026444,teamId:2297,name:"内斯",teamNum:"40",posId:"10",posCode:"M",posName:"中场",clubId:"7065",clubName:"普利茅斯",birthday:"1991-03-02",height:"177",marketValue:"25万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326839.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490294.png",countryName:"苏格兰"};
+  _personListHost["100044640"] = {pid:100044640,teamId:2297,name:"J.巴特兰",teamNum:"22",posId:"1",posCode:"G",posName:"守门员",clubId:"",clubName:"",birthday:"1993-03-10",height:"196",marketValue:"900万欧元",imgUrl:"http://pic.gooooal.com/images/100326/100326840.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListHost["100051894"] = {pid:100051894,teamId:2297,name:"A.格兰特",teamNum:"",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1994-01-23",height:"180",marketValue:"20万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490057.png",countryName:"澳大利亚"};
+  _personListHost["100167973"] = {pid:100167973,teamId:2297,name:"C.沃德",teamNum:"31",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1995-02-19",height:"",marketValue:"",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["452"] = {pid:452,teamId:53,name:"S.杰拉德",teamNum:"8",posId:"10",posCode:"M",posName:"中场",clubId:"880",clubName:"洛杉矶银河",birthday:"1980-05-30",height:"185",marketValue:"175万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318707.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["25907"] = {pid:25907,teamId:53,name:"K.图雷",teamNum:"4",posId:"2",posCode:"D",posName:"后卫",clubId:"903",clubName:"凯尔特人",birthday:"1981-03-19",height:"178",marketValue:"200万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318702.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490161.png",countryName:"科特迪瓦"};
+  _personListVisit["40525"] = {pid:40525,teamId:53,name:"B.琼斯",teamNum:"1",posId:"1",posCode:"G",posName:"守门员",clubId:"716",clubName:"费耶诺德",birthday:"1982-03-19",height:"194",marketValue:"100万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318699.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490057.png",countryName:"澳大利亚"};
+  _personListVisit["52101"] = {pid:52101,teamId:53,name:"G.约翰逊",teamNum:"2",posId:"2",posCode:"D",posName:"后卫",clubId:"2297",clubName:"斯托克城",birthday:"1984-08-23",height:"182",marketValue:"700万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318700.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["112049"] = {pid:112049,teamId:53,name:"S.萨马",teamNum:"45",posId:"10",posCode:"M",posName:"中场",clubId:"1325",clubName:"菲尔特",birthday:"1993-03-05",height:"189",marketValue:"20万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318729.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490095.png",countryName:"德国"};
+  _personListVisit["113710"] = {pid:113710,teamId:53,name:"M.斯科特尔",teamNum:"37",posId:"2",posCode:"D",posName:"后卫",clubId:"1705",clubName:"费内巴切",birthday:"1984-12-15",height:"191",marketValue:"450万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318724.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490289.png",countryName:"斯洛伐克"};
+  _personListVisit["117548"] = {pid:117548,teamId:53,name:"D.阿格",teamNum:"5",posId:"2",posCode:"D",posName:"后卫",clubId:"1685",clubName:"布隆德比",birthday:"1984-12-12",height:"191",marketValue:"400万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318703.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490094.png",countryName:"丹麦"};
+  _personListVisit["140200"] = {pid:140200,teamId:53,name:"J.恩里克",teamNum:"3",posId:"2",posCode:"D",posName:"后卫",clubId:"159",clubName:"萨拉戈萨",birthday:"1986-01-23",height:"184",marketValue:"300万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318701.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490328.png",countryName:"西班牙"};
+  _personListVisit["150392"] = {pid:150392,teamId:53,name:"S.米尼奥莱",teamNum:"22",posId:"1",posCode:"G",posName:"守门员",clubId:"",clubName:"",birthday:"1988-03-06",height:"193",marketValue:"1200万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318716.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490079.png",countryName:"比利时"};
+  _personListVisit["170032"] = {pid:170032,teamId:53,name:"L.苏亚雷斯",teamNum:"7",posId:"17",posCode:"F",posName:"前锋",clubId:"130",clubName:"巴塞罗那",birthday:"1987-01-24",height:"181",marketValue:"9000万欧元",imgUrl:"http://pic.gooooal.com/images/100333/100333770.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490325.png",countryName:"乌拉圭"};
+  _personListVisit["174671"] = {pid:174671,teamId:53,name:"L.卢卡斯",teamNum:"21",posId:"10",posCode:"M",posName:"中场",clubId:"106",clubName:"拉齐奥",birthday:"1987-01-09",height:"179",marketValue:"1200万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318715.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490070.png",countryName:"巴西"};
+  _personListVisit["174846"] = {pid:174846,teamId:53,name:"P.库蒂尼奥",teamNum:"10",posId:"10",posCode:"M",posName:"中场",clubId:"53",clubName:"利物浦",birthday:"1992-06-12",height:"171",marketValue:"4000万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318709.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490070.png",countryName:"巴西"};
+  _personListVisit["178792"] = {pid:178792,teamId:53,name:"D.斯图里奇",teamNum:"15",posId:"17",posCode:"F",posName:"前锋",clubId:"53",clubName:"利物浦",birthday:"1989-09-01",height:"188",marketValue:"2500万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318711.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["180532"] = {pid:180532,teamId:53,name:"M.萨科",teamNum:"17",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1990-02-13",height:"187",marketValue:"1800万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318713.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490107.png",countryName:"法国"};
+  _personListVisit["506284"] = {pid:506284,teamId:53,name:"乔·艾伦",teamNum:"24",posId:"10",posCode:"M",posName:"中场",clubId:"2297",clubName:"斯托克城",birthday:"1990-03-14",height:"168",marketValue:"800万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318717.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490317.png",countryName:"威尔士"};
+  _personListVisit["100003340"] = {pid:100003340,teamId:53,name:"V.摩西",teamNum:"12",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1990-12-12",height:"177",marketValue:"1800万欧元",imgUrl:"http://pic.gooooal.com/images/100333/100333771.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490257.png",countryName:"尼日利亚"};
+  _personListVisit["100008661"] = {pid:100008661,teamId:53,name:"A.西索科",teamNum:"20",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1987-09-15",height:"181",marketValue:"175万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318714.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490107.png",countryName:"法国"};
+  _personListVisit["100009327"] = {pid:100009327,teamId:53,name:"J.亨德森",teamNum:"14",posId:"10",posCode:"M",posName:"中场",clubId:"53",clubName:"利物浦",birthday:"1990-06-17",height:"182",marketValue:"2800万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318710.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100010244"] = {pid:100010244,teamId:53,name:"M.凯利",teamNum:"34",posId:"2",posCode:"D",posName:"后卫",clubId:"292",clubName:"水晶宫",birthday:"1990-04-27",height:"191",marketValue:"500万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318722.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100013427"] = {pid:100013427,teamId:53,name:"O.阿萨迪",teamNum:"24",posId:"17",posCode:"F",posName:"前锋",clubId:"728",clubName:"特温特",birthday:"1988-08-15",height:"175",marketValue:"700万欧元",imgUrl:"http://pic.gooooal.com/images/100127/100127392.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490240.png",countryName:"摩洛哥"};
+  _personListVisit["100013955"] = {pid:100013955,teamId:53,name:"I.阿斯帕斯",teamNum:"9",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1987-08-01",height:"176",marketValue:"1800万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318708.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490328.png",countryName:"西班牙"};
+  _personListVisit["100021675"] = {pid:100021675,teamId:53,name:"L.阿尔贝托",teamNum:"6",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1992-09-28",height:"182",marketValue:"500万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318704.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490328.png",countryName:"西班牙"};
+  _personListVisit["100023461"] = {pid:100023461,teamId:53,name:"罗宾逊",teamNum:"3",posId:"2",posCode:"D",posName:"后卫",clubId:"296",clubName:"女王公园巡游者",birthday:"1993-09-01",height:"180",marketValue:"100万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100027337"] = {pid:100027337,teamId:53,name:"J.弗拉纳甘",teamNum:"38",posId:"2",posCode:"D",posName:"后卫",clubId:"53",clubName:"利物浦",birthday:"1993-01-01",height:"181",marketValue:"700万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318725.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100031066"] = {pid:100031066,teamId:53,name:"A.维斯多姆",teamNum:"47",posId:"2",posCode:"D",posName:"后卫",clubId:"90",clubName:"德比郡",birthday:"1993-05-09",height:"186",marketValue:"275万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318737.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100032920"] = {pid:100032920,teamId:53,name:"T.伊洛里",teamNum:"26",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1993-02-26",height:"190",marketValue:"300万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318719.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490260.png",countryName:"葡萄牙"};
+  _personListVisit["100033181"] = {pid:100033181,teamId:53,name:"J.艾贝",teamNum:"33",posId:"17",posCode:"F",posName:"前锋",clubId:"7146",clubName:"伯恩茅斯",birthday:"1995-12-08",height:"176",marketValue:"500万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318721.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100033530"] = {pid:100033530,teamId:53,name:"B.罗杰斯",teamNum:"",posId:"18",posCode:"Head Coach",posName:"主教练",clubId:"903",clubName:"凯尔特人",birthday:"1973-01-26",height:"",marketValue:"",imgUrl:"http://pic.gooooal.com/images/100122/100122259.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490076.png",countryName:"北爱尔兰"};
+  _personListVisit["100034824"] = {pid:100034824,teamId:53,name:"J.特谢拉",teamNum:"53",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1993-01-18",height:"177",marketValue:"75万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490260.png",countryName:"葡萄牙"};
+  _personListVisit["100045454"] = {pid:100045454,teamId:53,name:"S.耶希尔",teamNum:"36",posId:"17",posCode:"F",posName:"前锋",clubId:"8905",clubName:"帕尼奥尼奥斯",birthday:"1994-05-25",height:"180",marketValue:"50万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318723.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490095.png",countryName:"德国"};
+  _personListVisit["100050476"] = {pid:100050476,teamId:53,name:"R.斯特林",teamNum:"31",posId:"17",posCode:"F",posName:"前锋",clubId:"216",clubName:"曼城",birthday:"1994-12-08",height:"170",marketValue:"4500万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318720.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100067635"] = {pid:100067635,teamId:53,name:"J.辛克莱尔",teamNum:"48",posId:"17",posCode:"F",posName:"前锋",clubId:"276",clubName:"沃特福德",birthday:"1996-09-20",height:"183",marketValue:"150万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318750.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100070756"] = {pid:100070756,teamId:53,name:"D.沃德",teamNum:"52",posId:"1",posCode:"G",posName:"守门员",clubId:"53",clubName:"利物浦",birthday:"1993-06-22",height:"191",marketValue:"150万欧元",imgUrl:"http://pic.gooooal.com/images/100318/100318741.jpg",countryImg:"http://pic.gooooal.com/images/100490/100490317.png",countryName:"威尔士"};
+  _personListVisit["100128214"] = {pid:100128214,teamId:53,name:"K.阿多里安",teamNum:"7",posId:"17",posCode:"F",posName:"前锋",clubId:"",clubName:"",birthday:"1993-01-19",height:"184",marketValue:"10万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490338.png",countryName:"匈牙利"};
+  _personListVisit["100152433"] = {pid:100152433,teamId:53,name:"B.史密斯",teamNum:"44",posId:"2",posCode:"D",posName:"后卫",clubId:"",clubName:"",birthday:"1994-04-09",height:"177",marketValue:"",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490057.png",countryName:"澳大利亚"};
+  _personListVisit["100152615"] = {pid:100152615,teamId:53,name:"J.罗西特",teamNum:"46",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1997-03-24",height:"178",marketValue:"75万欧元",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  _personListVisit["100153273"] = {pid:100153273,teamId:53,name:"C.布拉纳甘",teamNum:"50",posId:"10",posCode:"M",posName:"中场",clubId:"",clubName:"",birthday:"1996-05-09",height:"180",marketValue:"",imgUrl:"",countryImg:"http://pic.gooooal.com/images/100490/100490351.png",countryName:"英格兰"};
+  for(var p1 in _personListHost)
+    _personList[p1] = _personListHost[p1];
+  for(var p2 in _personListVisit)
+    _personList[p2] = _personListVisit[p2];
+  var _personStat = {};
+  var _personStatAvg = {};
+</script>
+
+<div class="matchTime">
+  <ul id="div_timeLine" class="mTBlock"></ul>
+  <div id="div_logList" class="matchCont"></div>
+</div>
+<script type="text/javascript">
+  addTimeLine();
+  addLogList();
+</script>
+
+
+<!--有阵形图-->
+<div class="mainBlock">
+  <div class="areaCont">
+    <div id="div_limg" class="areaB01"></div>
+    <div id="div_lteam1" class="areaB02" style="display:none"></div>
+    <div id="div_lteam2" class="areaB02" style="display:none"></div>
+    <div id="div_injury" class="areaB02" style="display:none"></div>
+    <div id="div_compare" class="areaB05" style="display:none">
+      <div class="PlayerComparL tab" style="width:82%; background:none;">
+        <ul class="leftTit tab_menu">
+          <li class="selected" onclick="setCompareTeam(1,1);">主队</li>
+          <li onclick="setCompareTeam(1,2);">客队</li>
+        </ul>
+        <div class="leftCont tab_box">
+          <div class="leftDetail01">
+            <div class="leftDetail01-Cont">
+              <ul id="div_cp_list1" class="leftDetail01-List tab_s"></ul>
+            </div>
+            <div onmouseover="scrolPclist(1,1);" onmouseout="scrolPclist(0);" class="tabPre"></div>
+            <div onmouseover="scrolPclist(1,2);" onmouseout="scrolPclist(0);" class="tabNext"></div>
+          </div>
+          <div id="div_cp_detail1"></div>
+        </div>
+      </div>
+      <div class="PlayerComparR tab" style="width:18%;">
+        <ul class="rightTit tab_menu">
+          <li onclick="setCompareTeam(2,1);">主队</li>
+          <li class="selected" onclick="setCompareTeam(2,2);">客队</li>
+        </ul>
+        <div class="rightCont tab_box">
+          <div class="leftDetail01">
+            <div class="leftDetail01-Cont">
+              <ul id="div_cp_list2" class="leftDetail01-List tab_s"></ul>
+            </div>
+            <div onmouseover="scrolPclist(2,1);" onmouseout="scrolPclist(0);" class="tabPre"></div>
+            <div onmouseover="scrolPclist(2,2);" onmouseout="scrolPclist(0);" class="tabNext"></div>
+          </div>
+          <div id="div_cp_detail2"></div>
+        </div>
+      </div>
+    </div>
+    <div id="div_persond" class="personDetail" style="display:none;"></div>
+  </div>
+  <ul class="areaTit" style="left:180px;">
+    <li class="selected"><em class="em01"></em><p>阵型图</p><span class="arr"></span></li>
+    <li><em class="em01"></em><p>主队阵容</p><span class="arr"></span></li>
+    <li><em class="em01"></em><p>客队阵容</p><span class="arr"></span></li>
+    <li><em class="em02"></em><p>伤员伤停</p><span class="arr"></span></li>
+    
+  </ul>
+</div>
+<script type="text/javascript">
+  addLineupImg();
+  addLineupA(1);
+  addLineupA(2);
+  addInjury();
+  setCompareTeam(1,1);
+  setCompareTeam(2,2);
+</script>
+
+
+
+
+
+<div class="teamPersCont">
+  <ul class="teamPerTit">
+    <li class="selected">球队技术统计</li>
+    
+  </ul>
+  <div class="teamPerC">
+    <div class="tab">
+      <ul class="teamPSubTit tab_menu">
+        <li class="selected" onclick="showById('div_stat',true);showById('div_stat2',false);">本场</li>
+        <li onclick="showById('div_stat',false);showById('div_stat2',true);">场均</li>
+      </ul>
+      <div class="teamPerSubC tab_box">
+        <div id="div_stat">
+          <div class="teamPerList">
+            <p class="p01">射门</p>
+            <p class="p02">
+              <span class="span01">13</span>
+              <span class="block"><em style="width:50.0%;"></em></span>
+              <span class="span02">13</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射正</p>
+            <p class="p02">
+              <span class="span01">4</span>
+              <span class="block"><em style="width:30.76923076923077%;"></em></span>
+              <span class="span02">9</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射偏</p>
+            <p class="p02">
+              <span class="span01">5</span>
+              <span class="block"><em style="width:55.55555555555556%;"></em></span>
+              <span class="span02">4</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射门被挡</p>
+            <p class="p02">
+              <span class="span01">4</span>
+              <span class="block"><em style="width:100.0%;"></em></span>
+              <span class="span02">0</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射门被扑</p>
+            <p class="p02">
+              <span class="span01">1</span>
+              <span class="block"><em style="width:20.0%;"></em></span>
+              <span class="span02">4</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">角球</p>
+            <p class="p02">
+              <span class="span01">11</span>
+              <span class="block"><em style="width:84.61538461538461%;"></em></span>
+              <span class="span02">2</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">任意球</p>
+            <p class="p02">
+              <span class="span01">8</span>
+              <span class="block"><em style="width:42.10526315789474%;"></em></span>
+              <span class="span02">11</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">越位</p>
+            <p class="p02">
+              <span class="span01">1</span>
+              <span class="block"><em style="width:100.0%;"></em></span>
+              <span class="span02">0</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">犯规</p>
+            <p class="p02">
+              <span class="span01">10</span>
+              <span class="block"><em style="width:55.55555555555556%;"></em></span>
+              <span class="span02">8</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">黄牌</p>
+            <p class="p02">
+              <span class="span01">1</span>
+              <span class="block"><em style="width:50.0%;"></em></span>
+              <span class="span02">1</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">红牌</p>
+            <p class="p02">
+              <span class="span01">0</span>
+              <span class="block"><em style="width:50%;"></em></span>
+              <span class="span02">0</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">控球率%</p>
+            <p class="p02">
+              <span class="span01">51</span>
+              <span class="block"><em style="width:51.0%;"></em></span>
+              <span class="span02">49</span>
+            </p>
+          </div>
+        </div>
+
+        <div id="div_stat2" style="display:none;">
+          <div class="teamPerList">
+            <p class="p01">射门</p>
+            <p class="p02">
+              <span class="span01">11.3</span>
+              <span class="block"><em style="width:39.7887322643025%;"></em></span>
+              <span class="span02">17.1</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射正</p>
+            <p class="p02">
+              <span class="span01">3.7</span>
+              <span class="block"><em style="width:35.238094892090956%;"></em></span>
+              <span class="span02">6.8</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射偏</p>
+            <p class="p02">
+              <span class="span01">5.1</span>
+              <span class="block"><em style="width:42.4999992052714%;"></em></span>
+              <span class="span02">6.9</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射门被挡</p>
+            <p class="p02">
+              <span class="span01">2.4</span>
+              <span class="block"><em style="width:41.379310628321726%;"></em></span>
+              <span class="span02">3.4</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">射门被扑</p>
+            <p class="p02">
+              <span class="span01">2.6</span>
+              <span class="block"><em style="width:38.80596983058331%;"></em></span>
+              <span class="span02">4.1</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">角球</p>
+            <p class="p02">
+              <span class="span01">4.3</span>
+              <span class="block"><em style="width:42.156863432579506%;"></em></span>
+              <span class="span02">5.9</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">任意球</p>
+            <p class="p02">
+              <span class="span01">10.8</span>
+              <span class="block"><em style="width:48.21428533415406%;"></em></span>
+              <span class="span02">11.6</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">越位</p>
+            <p class="p02">
+              <span class="span01">2.1</span>
+              <span class="block"><em style="width:50.0%;"></em></span>
+              <span class="span02">2.1</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">犯规</p>
+            <p class="p02">
+              <span class="span01">12.7</span>
+              <span class="block"><em style="width:54.04255237985164%;"></em></span>
+              <span class="span02">10.8</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">黄牌</p>
+            <p class="p02">
+              <span class="span01">2.1</span>
+              <span class="block"><em style="width:59.999999318804036%;"></em></span>
+              <span class="span02">1.4</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">红牌</p>
+            <p class="p02">
+              <span class="span01">0.1</span>
+              <span class="block"><em style="width:100.0%;"></em></span>
+              <span class="span02">0.0</span>
+            </p>
+          </div>
+          <div class="teamPerList">
+            <p class="p01">控球率%</p>
+            <p class="p02">
+              <span class="span01">47.6</span>
+              <span class="block"><em style="width:45.94594514980751%;"></em></span>
+              <span class="span02">56.0</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+
+<div class="foot">© 1998-2017 www.gooooal.com All Rights Reserved</div>
+<br/>
+<div class="ad-left">
+  <div id="ad_l_1"></div>
+  <div id="ad_l_2"></div>
+</div>
+<div class="ad-right">
+  <div id="ad_r_1"></div>
+  <div id="ad_r_2"></div>
+</div>
+<script src="http://pic.gooooal.com/js/redirct.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var lang = "cn";
+  var _pstIdx = 0;
+  var _pallIdx = 0;
+  function chgpst(t) {
+    var n1 = parseInt(_pstIdx/2);
+    var n2 = _pstIdx%2;
+    if(t==1 || t==2)
+      n1 = t-1;
+    else
+      n2 = 1-n2;
+    $('#tab_person_'+_pstIdx).hide();
+    _pstIdx = n1*2+n2;
+    $('#tab_person_'+_pstIdx).show();
+    if(t==3)
+      $('.teamMainBut').html((n2?'主':'客')+'<br />队<br />>>');
+  }
+  function chgpall(t) {
+    var n1 = parseInt(_pallIdx/2);
+    var n2 = _pallIdx%2;
+    if(t==1 || t==2)
+      n1 = t-1;
+    else
+      n2 = t-3;
+    $('#tab_personall_'+_pallIdx).hide();
+    $('#tab_personallhead_'+_pallIdx).hide();
+    _pallIdx = n1*2+n2;
+    $('#tab_personall_'+_pallIdx).show();
+    $('#tab_personallhead_'+_pallIdx).show();
+  }
+
+  function chgMatch(mid) {
+    toMatch(mid, "cn");
+  }
+  function chgLang(lang) {
+    toMatch("937351", lang);
+  }
+  function toMatch(mid, lang) {
+    if(mid) {
+      if(window.location.href.indexOf(".html")>0)
+        window.location = 'http://www.gooooal.com/analysis/event/'+parseInt(mid/100)+'/event_'+lang+'_'+mid+'.html';
+      else
+        window.location = "?matchId="+mid+"&lang="+lang;
+    }
+  }
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?2a216a1be7b09912ccdd518126ea6c19";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- cnzz stat -->
+<div style="display: none;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256409754'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256409754%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<!-- cnzz stat -->
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  var pageTracker = _gat._getTracker("UA-1825341-1");
+  pageTracker._setDomainName("gooooal.com");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+</script>
+</body>
+</html>
