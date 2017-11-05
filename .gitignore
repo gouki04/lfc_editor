@@ -24,10 +24,8 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
-*.exe
 *.out
 *.app
 
@@ -42,3 +40,4 @@ lfc-editor/x64/Release/lfc-editor.log
 *.exp
 *.iobj
 *.ipdb
+x64/Release/lfc-editor.lib
