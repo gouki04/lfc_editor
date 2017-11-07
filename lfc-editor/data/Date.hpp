@@ -104,51 +104,51 @@ namespace lfc
             }
         }
 
-		bool operator==(const Date &other)
-		{
-			return year == other.year && month == other.month && day == other.day;
-		}
+        bool operator==(const Date &other)
+        {
+            return year == other.year && month == other.month && day == other.day;
+        }
 
-		bool operator!=(const Date &other)
-		{
-			return !(*this == other);
-		}
+        bool operator!=(const Date &other)
+        {
+            return !(*this == other);
+        }
 
-		bool operator<(const Date &other)
-		{
-			if (year == other.year) {
-				if (month == other.month) {
-					return day < other.day;
-				}
+        bool operator<(const Date &other)
+        {
+            if (year == other.year) {
+                if (month == other.month) {
+                    return day < other.day;
+                }
 
-				return month < other.month;
-			}
+                return month < other.month;
+            }
 
-			return year < other.year;
-		}
+            return year < other.year;
+        }
 
-		bool operator<=(const Date &other)
-		{
-			if (year == other.year) {
-				if (month == other.month) {
-					return day <= other.day;
-				}
+        bool operator<=(const Date &other)
+        {
+            if (year == other.year) {
+                if (month == other.month) {
+                    return day <= other.day;
+                }
 
-				return month < other.month;
-			}
+                return month < other.month;
+            }
 
-			return year < other.year;
-		}
+            return year < other.year;
+        }
 
-		bool operator>(const Date &other)
-		{
-			return !(*this <= other);
-		}
+        bool operator>(const Date &other)
+        {
+            return !(*this <= other);
+        }
 
-		bool operator>=(const Date &other)
-		{
-			return !(*this < other);
-		}
+        bool operator>=(const Date &other)
+        {
+            return !(*this < other);
+        }
 
         template<class Archive>
         void serialize(Archive &archive)

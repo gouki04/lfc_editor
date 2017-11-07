@@ -23,8 +23,11 @@
                 "key": "round %d",
                 "value": "第%d轮"
             },{
-                "key": "play off",
+                "key": "qualifying",
                 "value": "资格赛"
+			},{
+                "key": "play off",
+                "value": "附加赛"
             },{
                 "key": "first",
                 "value": "首回合"

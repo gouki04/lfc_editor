@@ -16,8 +16,10 @@ int main(int, char**)
 {
     // Setup window
     glfwSetErrorCallback(error_callback);
-    if (!glfwInit())
+    if (!glfwInit()) {
         return 1;
+    }
+
     GLFWwindow* window = glfwCreateWindow(1280, 720, "ImGui OpenGL2 example", NULL, NULL);
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); // Enable vsync
@@ -37,8 +39,7 @@ int main(int, char**)
     Entry();
 
     // Main loop
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
         ImGui_ImplGlfw_NewFrame();
 

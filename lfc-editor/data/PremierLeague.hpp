@@ -116,11 +116,11 @@ namespace lfc
             FillMatch(to_fill, rounds);
         }
 
-		template<class Archive>
-		void save(Archive &archive) const
-		{
-			archive(cereal::base_class<Event>(this), CEREAL_NVP(rounds), CEREAL_NVP(position));
-		}
+        template<class Archive>
+        void save(Archive &archive) const
+        {
+            archive(cereal::base_class<Event>(this), CEREAL_NVP(rounds), CEREAL_NVP(position));
+        }
 
         template<class Archive>
         void load(Archive &archive)

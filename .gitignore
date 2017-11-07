@@ -41,3 +41,4 @@ lfc-editor/x64/Release/lfc-editor.log
 *.iobj
 *.ipdb
 x64/Release/lfc-editor.lib
+.vs/lfc-editor/v14/.suo

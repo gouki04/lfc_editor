@@ -677,6 +677,16 @@ static void ShowEventWindow(bool* p_open)
             ImGui::PushID(el.get());
 
             {
+                ImGui::TwoMatchTitle(utf8("qualifying"), el->qualifying);
+                ImGui::PushID(&el->qualifying);
+                ImGui::PushID(1); ImGui::MatchButton(utf8("first"), &(el->qualifying.first)); ImGui::PopID();
+                ImGui::PushID(2); ImGui::MatchButton(utf8("second"), &(el->qualifying.second)); ImGui::PopID();
+                ImGui::PopID();
+            }
+
+            ImGui::Separator();
+
+            {
                 ImGui::TwoMatchTitle(utf8("play off"), el->play_off);
                 ImGui::PushID(&el->play_off);
                 ImGui::PushID(1); ImGui::MatchButton(utf8("first"), &(el->play_off.first)); ImGui::PopID();

@@ -32,95 +32,95 @@ namespace utility
         return nullptr;
     }
 
-	const char *ToString(EEventType v)
-	{
-		switch (v)
-		{
-		case EEventType::Any:
-			return "Any";
-		case EEventType::FriendlyMatch:
-			return "FriendlyMatch";
-		case EEventType::PremierLeague:
-			return "PremierLeague";
-		case EEventType::UEFAChampionsLeague:
-			return "UEFAChampionsLeague";
-		case EEventType::PremierLeagueAsiaTrophy:
-			return "PremierLeagueAsiaTrophy";
-		case EEventType::AudiCup:
-			return "AudiCup";
-		case EEventType::EFLCup:
-			return "EFLCup";
-		case EEventType::FACup:
-			return "FACup";
-		case EEventType::InternationalChampionsCup:
-			return "InternationalChampionsCup";
-		case EEventType::UEFAEuropaLeague:
-			return "UEFAEuropaLeague";
-		default:
-			break;
-		}
+    const char *ToString(EEventType v)
+    {
+        switch (v)
+        {
+        case EEventType::Any:
+            return "Any";
+        case EEventType::FriendlyMatch:
+            return "FriendlyMatch";
+        case EEventType::PremierLeague:
+            return "PremierLeague";
+        case EEventType::UEFAChampionsLeague:
+            return "UEFAChampionsLeague";
+        case EEventType::PremierLeagueAsiaTrophy:
+            return "PremierLeagueAsiaTrophy";
+        case EEventType::AudiCup:
+            return "AudiCup";
+        case EEventType::EFLCup:
+            return "EFLCup";
+        case EEventType::FACup:
+            return "FACup";
+        case EEventType::InternationalChampionsCup:
+            return "InternationalChampionsCup";
+        case EEventType::UEFAEuropaLeague:
+            return "UEFAEuropaLeague";
+        default:
+            break;
+        }
 
-		return nullptr;
-	}
+        return nullptr;
+    }
 
-	const char *ToString(EMatchSide v)
-	{
-		switch (v)
-		{
-		case EMatchSide::Any:
-			return "Any";
-		case EMatchSide::Home:
-			return "Home";
-		case EMatchSide::Away:
-			return "Away";
-		default:
-			break;
-		}
+    const char *ToString(EMatchSide v)
+    {
+        switch (v)
+        {
+        case EMatchSide::Any:
+            return "Any";
+        case EMatchSide::Home:
+            return "Home";
+        case EMatchSide::Away:
+            return "Away";
+        default:
+            break;
+        }
 
-		return nullptr;
-	}
+        return nullptr;
+    }
 
-	const char *ToString(EGoalType v)
-	{
-		switch (v)
-		{
-		case EGoalType::Any:
-			return "Any";
-		case EGoalType::Normal:
-			return "Normal";
-		case EGoalType::Penalty:
-			return "Penalty";
-		case EGoalType::PenaltyShootOut:
-			return "PenaltyShootOut";
-		case EGoalType::FreeKick:
-			return "FreeKick";
-		case EGoalType::OwnGoal:
-			return "OwnGoal";
-		default:
-			break;
-		}
+    const char *ToString(EGoalType v)
+    {
+        switch (v)
+        {
+        case EGoalType::Any:
+            return "Any";
+        case EGoalType::Normal:
+            return "Normal";
+        case EGoalType::Penalty:
+            return "Penalty";
+        case EGoalType::PenaltyShootOut:
+            return "PenaltyShootOut";
+        case EGoalType::FreeKick:
+            return "FreeKick";
+        case EGoalType::OwnGoal:
+            return "OwnGoal";
+        default:
+            break;
+        }
 
-		return nullptr;
-	}
+        return nullptr;
+    }
 
-	const char *ToString(EMatchResult v)
-	{
-		switch (v)
-		{
-		case EMatchResult::Any:
-			return "Any";
-		case EMatchResult::Win:
-			return "Win";
-		case EMatchResult::Draw:
-			return "Draw";
-		case EMatchResult::Lose:
-			return "Lose";
-		default:
-			break;
-		}
+    const char *ToString(EMatchResult v)
+    {
+        switch (v)
+        {
+        case EMatchResult::Any:
+            return "Any";
+        case EMatchResult::Win:
+            return "Win";
+        case EMatchResult::Draw:
+            return "Draw";
+        case EMatchResult::Lose:
+            return "Lose";
+        default:
+            break;
+        }
 
-		return nullptr;
-	}
+        return nullptr;
+    }
 
     std::string ToString(Date &date)
     {
@@ -134,90 +134,90 @@ namespace utility
         return ss.str();
     }
 
-	std::string ToString(std::shared_ptr<Match> match)
-	{
-		if (!match) {
-			return "------";
-		}
+    std::string ToString(std::shared_ptr<Match> match)
+    {
+        if (!match) {
+            return "------";
+        }
 
-		std::stringstream ss;
-		if (match->side == EMatchSide::Home) {
-			if (match->HasPenaltyShootout()) {
-				ss << global_db.LFC->name << ' ' << match->lfc_goals.size() << " (" << match->lfc_penalty_shootout_goals.size() << ')'
-				   << " v " 
-				   << '(' << match->opponent_penalty_shootout_goals.size() << ") " << match->opponent_goals.size() << ' ' << match->opponent_team->name;
-			}
-			else {
-				ss << global_db.LFC->name << ' ' << match->lfc_goals.size() << " v " << match->opponent_goals.size() << ' ' << match->opponent_team->name;
-			}
-		}
-		else {
-			if (match->HasPenaltyShootout()) {
-				ss << match->opponent_team->name << ' ' << match->opponent_goals.size() << " (" << match->opponent_penalty_shootout_goals.size() << ')'
-					<< " v "
-					<< '(' << match->lfc_penalty_shootout_goals.size() << ") " << match->lfc_goals.size() << ' ' << global_db.LFC->name;
-			}
-			else {
-				ss << match->opponent_team->name << ' ' << match->opponent_goals.size() << " v " << match->lfc_goals.size() << ' ' << global_db.LFC->name;
-			}
-		}
+        std::stringstream ss;
+        if (match->side == EMatchSide::Home) {
+            if (match->HasPenaltyShootout()) {
+                ss << global_db.LFC->name << ' ' << match->lfc_goals.size() << " (" << match->lfc_penalty_shootout_goals.size() << ')'
+                   << " v " 
+                   << '(' << match->opponent_penalty_shootout_goals.size() << ") " << match->opponent_goals.size() << ' ' << match->opponent_team->name;
+            }
+            else {
+                ss << global_db.LFC->name << ' ' << match->lfc_goals.size() << " v " << match->opponent_goals.size() << ' ' << match->opponent_team->name;
+            }
+        }
+        else {
+            if (match->HasPenaltyShootout()) {
+                ss << match->opponent_team->name << ' ' << match->opponent_goals.size() << " (" << match->opponent_penalty_shootout_goals.size() << ')'
+                    << " v "
+                    << '(' << match->lfc_penalty_shootout_goals.size() << ") " << match->lfc_goals.size() << ' ' << global_db.LFC->name;
+            }
+            else {
+                ss << match->opponent_team->name << ' ' << match->opponent_goals.size() << " v " << match->lfc_goals.size() << ' ' << global_db.LFC->name;
+            }
+        }
 
-		return ss.str();
-	}
+        return ss.str();
+    }
 
-	std::string ToString(MatchTime &match_time)
-	{
-		if (match_time.is_penalty_shootout) {
-			return utf8("(penalty)");
-		}
+    std::string ToString(MatchTime &match_time)
+    {
+        if (match_time.is_penalty_shootout) {
+            return utf8("(penalty)");
+        }
 
-		std::stringstream ss;
-		if (match_time.injury_time > 0) {
-			ss << '(' << match_time.local_time << '+' << match_time.injury_time << ')';
-		}
-		else {
-			ss << '(' << match_time.local_time << ')';
-		}
+        std::stringstream ss;
+        if (match_time.injury_time > 0) {
+            ss << '(' << match_time.local_time << '+' << match_time.injury_time << ')';
+        }
+        else {
+            ss << '(' << match_time.local_time << ')';
+        }
 
-		return ss.str();
-	}
+        return ss.str();
+    }
 
-	const char *ToString(std::shared_ptr<Player> player)
-	{
-		if (player) {
-			return player->name.c_str();
-		}
-		else {
-			return "null";
-		}
-	}
+    const char *ToString(std::shared_ptr<Player> player)
+    {
+        if (player) {
+            return player->name.c_str();
+        }
+        else {
+            return "null";
+        }
+    }
 
-	std::string ToString(std::shared_ptr<Goal> goal)
-	{
-		std::stringstream ss;
-		ss << ToString(goal->time) << ToString(goal->score_player);
+    std::string ToString(std::shared_ptr<Goal> goal)
+    {
+        std::stringstream ss;
+        ss << ToString(goal->time) << ToString(goal->score_player);
 
-		return ss.str();
-	}
+        return ss.str();
+    }
 
-	const char *ToString(TwoMatch &two_match)
-	{
-		if (two_match.second) {
-			auto result = two_match.GetResult();
-			if (result == EMatchResult::Win) {
-				return utf8("pass");
-			}
-			else {
-				return utf8("out");
-			}
-		}
-		else if (two_match.first) {
-			return utf8("...");
-		}
-		else {
-			return utf8("none");
-		}
-	}
+    const char *ToString(TwoMatch &two_match)
+    {
+        if (two_match.second) {
+            auto result = two_match.GetResult();
+            if (result == EMatchResult::Win) {
+                return utf8("pass");
+            }
+            else {
+                return utf8("out");
+            }
+        }
+        else if (two_match.first) {
+            return utf8("...");
+        }
+        else {
+            return utf8("none");
+        }
+    }
 
     const char *ToString(bool v)
     {
@@ -237,221 +237,221 @@ namespace ImGui
         ImGui::Combo(label, (int*)(val), "Any\0Forward\0Midfielder\0Defender\0Goalkeeper\0\0");
     }
 
-	static void EEventEdit(const char *label, EEventType *val)
-	{
-		ImGui::Combo(label, (int*)(val), "Any\0FriendlyMatch\0PremierLeague\0UEFAChampionsLeague\0PremierLeagueAsiaTrophy\0AudiCup\0EFLCup\0FACup\0InternationalChampionsCup\0UEFAEuropaLeague\0\0");
-	}
+    static void EEventEdit(const char *label, EEventType *val)
+    {
+        ImGui::Combo(label, (int*)(val), "Any\0FriendlyMatch\0PremierLeague\0UEFAChampionsLeague\0PremierLeagueAsiaTrophy\0AudiCup\0EFLCup\0FACup\0InternationalChampionsCup\0UEFAEuropaLeague\0\0");
+    }
 
-	static void ESideEdit(const char *label, EMatchSide *val)
-	{
-		ImGui::Combo(label, (int*)(val), "Any\0Home\0Away\0\0");
-	}
+    static void ESideEdit(const char *label, EMatchSide *val)
+    {
+        ImGui::Combo(label, (int*)(val), "Any\0Home\0Away\0\0");
+    }
 
-	static void EMatchResultEdit(const char *label, EMatchResult *val)
-	{
-		ImGui::Combo(label, (int*)(val), "Any\0Win\0Draw\0Lose\0\0");
-	}
+    static void EMatchResultEdit(const char *label, EMatchResult *val)
+    {
+        ImGui::Combo(label, (int*)(val), "Any\0Win\0Draw\0Lose\0\0");
+    }
 
-	static void EGoalTypeEdit(const char *label, EGoalType *val)
-	{
-		ImGui::Combo(label, (int*)(val), "Normal\0Penalty\0PenaltyShootOut\0FreeKick\0OwnGoal\0\0");
-	}
+    static void EGoalTypeEdit(const char *label, EGoalType *val)
+    {
+        ImGui::Combo(label, (int*)(val), "Normal\0Penalty\0PenaltyShootOut\0FreeKick\0OwnGoal\0\0");
+    }
 
-	static bool club_getter(void*, int idx, const char** out_text)
-	{
-		if (idx == 0) {
-			*out_text = "null";
-		}
-		else {
-			*out_text = global_db.clubs[idx -1]->name.c_str();
-		}
-		return true;
-	}
+    static bool club_getter(void*, int idx, const char** out_text)
+    {
+        if (idx == 0) {
+            *out_text = "null";
+        }
+        else {
+            *out_text = global_db.clubs[idx -1]->name.c_str();
+        }
+        return true;
+    }
 
-	static int get_club_index(std::vector<std::shared_ptr<FootballClub>> &clubs, std::shared_ptr<FootballClub> club)
-	{
-		if (club == nullptr) {
-			return 0;
-		}
+    static int get_club_index(std::vector<std::shared_ptr<FootballClub>> &clubs, std::shared_ptr<FootballClub> club)
+    {
+        if (club == nullptr) {
+            return 0;
+        }
 
-		auto itr = std::find(clubs.begin(), clubs.end(), club);
-		if (itr == clubs.end()) {
-			return 0;
-		}
+        auto itr = std::find(clubs.begin(), clubs.end(), club);
+        if (itr == clubs.end()) {
+            return 0;
+        }
 
-		return itr - clubs.begin() + 1;
-	}
+        return itr - clubs.begin() + 1;
+    }
 
-	static void ClubCombo(const char *label, std::shared_ptr<FootballClub> *p_club)
-	{
-		auto clubs = &global_db.clubs;
-		auto club = *p_club;
-		auto index = get_club_index(*clubs, club);
-		if (ImGui::Combo(label, &index, club_getter, nullptr, global_db.clubs.size() + 1)) {
-			if (index == 0) {
-				*p_club = nullptr;
-			}
-			else {
-				*p_club = (*clubs)[index - 1];
-			}
-		}
-	}
+    static void ClubCombo(const char *label, std::shared_ptr<FootballClub> *p_club)
+    {
+        auto clubs = &global_db.clubs;
+        auto club = *p_club;
+        auto index = get_club_index(*clubs, club);
+        if (ImGui::Combo(label, &index, club_getter, nullptr, global_db.clubs.size() + 1)) {
+            if (index == 0) {
+                *p_club = nullptr;
+            }
+            else {
+                *p_club = (*clubs)[index - 1];
+            }
+        }
+    }
 
-	static bool player_getter(void *data, int idx, const char** out_text)
-	{
-		auto players = (std::vector<std::shared_ptr<Player>>*)data;
+    static bool player_getter(void *data, int idx, const char** out_text)
+    {
+        auto players = (std::vector<std::shared_ptr<Player>>*)data;
 
-		if (idx == 0) {
-			*out_text = "null";
-		}
-		else {
-			*out_text = (*players)[idx - 1]->name.c_str();
-		}
-		return true;
-	}
+        if (idx == 0) {
+            *out_text = "null";
+        }
+        else {
+            *out_text = (*players)[idx - 1]->name.c_str();
+        }
+        return true;
+    }
 
-	static int get_player_index(std::vector<std::shared_ptr<Player>> &players, std::shared_ptr<Player> player)
-	{
-		if (player == nullptr) {
-			return 0;
-		}
+    static int get_player_index(std::vector<std::shared_ptr<Player>> &players, std::shared_ptr<Player> player)
+    {
+        if (player == nullptr) {
+            return 0;
+        }
 
-		auto itr = std::find(players.begin(), players.end(), player);
-		if (itr == players.end()) {
-			return 0;
-		}
+        auto itr = std::find(players.begin(), players.end(), player);
+        if (itr == players.end()) {
+            return 0;
+        }
 
-		return itr - players.begin() + 1;
-	}
+        return itr - players.begin() + 1;
+    }
 
-	static void PlayerCombo(const char *label, std::shared_ptr<Player> *p_player, std::vector<std::shared_ptr<Player>> *players = nullptr)
-	{
-		if (players == nullptr) {
-			players = &global_db.players;
-		}
+    static void PlayerCombo(const char *label, std::shared_ptr<Player> *p_player, std::vector<std::shared_ptr<Player>> *players = nullptr)
+    {
+        if (players == nullptr) {
+            players = &global_db.players;
+        }
 
-		auto player = *p_player;
-		auto index = get_player_index(*players, player);
-		if (ImGui::Combo(label, &index, player_getter, players, players->size() + 1)) {
-			if (index == 0) {
-				*p_player = nullptr;
-			}
-			else {
-				*p_player = (*players)[index - 1];
-			}
-		}
-	}
+        auto player = *p_player;
+        auto index = get_player_index(*players, player);
+        if (ImGui::Combo(label, &index, player_getter, players, players->size() + 1)) {
+            if (index == 0) {
+                *p_player = nullptr;
+            }
+            else {
+                *p_player = (*players)[index - 1];
+            }
+        }
+    }
 
     static void Text(const std::string &txt)
     {
         ImGui::Text(txt.c_str());
     }
 
-	static void LabelText(const char *label, const std::string &txt)
-	{
-		ImGui::LabelText(label, txt.c_str());
-	}
+    static void LabelText(const char *label, const std::string &txt)
+    {
+        ImGui::LabelText(label, txt.c_str());
+    }
 
-	static void GoalButton(const char *label, std::shared_ptr<Goal> *p_goal)
-	{
-		auto goal = *p_goal;
-		ImGui::LabelText(label, utility::ToString(goal));
-		ImGui::SameLine();
-		if (goal) {
-			if (goal == global_db.selected_goal) {
-				ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
-				ImGui::Button("E", ImVec2(-1, 0));
-				ImGui::PopStyleColor(1);
-			}
-			else {
-				if (ImGui::Button("E", ImVec2(-1, 0))) {
-					global_db.selected_goal = goal;
-				}
-			}
-		}
-	}
+    static void GoalButton(const char *label, std::shared_ptr<Goal> *p_goal)
+    {
+        auto goal = *p_goal;
+        ImGui::LabelText(label, utility::ToString(goal));
+        ImGui::SameLine();
+        if (goal) {
+            if (goal == global_db.selected_goal) {
+                ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
+                ImGui::Button("E", ImVec2(-1, 0));
+                ImGui::PopStyleColor(1);
+            }
+            else {
+                if (ImGui::Button("E", ImVec2(-1, 0))) {
+                    global_db.selected_goal = goal;
+                }
+            }
+        }
+    }
 
-	static bool MatchButton(const char *label, std::shared_ptr<Match> *p_match)
-	{
-		auto match = *p_match;
-		ImGui::LabelText(label, utility::ToString(match));
-		ImGui::SameLine();
-		if (match) {
-			if (match == global_db.selected_match) {
-				ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
-				ImGui::Button("E", ImVec2(-1, 0));
-				ImGui::PopStyleColor(1);
-			}
-			else {
-				if (ImGui::Button("E", ImVec2(-1, 0))) {
-					global_db.selected_match = match;
-				}
-			}
-		}
-		else {
-			if (ImGui::Button("+", ImVec2(-1, 0))) {
-				match = std::make_shared<Match>();
-				match->id = global_db.MakeMatchId();
-				match->opponent_team = global_db.LFC;
-				match->side = EMatchSide::Home;
+    static bool MatchButton(const char *label, std::shared_ptr<Match> *p_match)
+    {
+        auto match = *p_match;
+        ImGui::LabelText(label, utility::ToString(match));
+        ImGui::SameLine();
+        if (match) {
+            if (match == global_db.selected_match) {
+                ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
+                ImGui::Button("E", ImVec2(-1, 0));
+                ImGui::PopStyleColor(1);
+            }
+            else {
+                if (ImGui::Button("E", ImVec2(-1, 0))) {
+                    global_db.selected_match = match;
+                }
+            }
+        }
+        else {
+            if (ImGui::Button("+", ImVec2(-1, 0))) {
+                match = std::make_shared<Match>();
+                match->id = global_db.MakeMatchId();
+                match->opponent_team = global_db.LFC;
+                match->side = EMatchSide::Home;
 
-				*p_match = match;
+                *p_match = match;
 
-				global_db.matchs.push_back(match);
-				global_db.selected_match = match;
+                global_db.matchs.push_back(match);
+                global_db.selected_match = match;
 
-				return true;
-			}
-		}
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	static void ReplayMatchButton(const char *label, ReplayMatch *p_replay_match)
-	{
-		ImGui::PushID(1); MatchButton(label, &p_replay_match->match); ImGui::PopID();
+    static void ReplayMatchButton(const char *label, ReplayMatch *p_replay_match)
+    {
+        ImGui::PushID(1); MatchButton(label, &p_replay_match->match); ImGui::PopID();
 
-		if (p_replay_match->match) {
-			auto result = p_replay_match->match->GetResult();
-			if (result == EMatchResult::Draw) {
-				ImGui::PushID(2); MatchButton(utf8("replay"), &p_replay_match->replay); ImGui::PopID();
-			}
-		}
-	}
+        if (p_replay_match->match) {
+            auto result = p_replay_match->match->GetResult();
+            if (result == EMatchResult::Draw) {
+                ImGui::PushID(2); MatchButton(utf8("replay"), &p_replay_match->replay); ImGui::PopID();
+            }
+        }
+    }
 
-	static void TwoMatchTitle(const char *label, TwoMatch &two_match)
-	{
-		ImGui::Text(label);
-		ImGui::SameLine();
-		ImGui::Text(utility::ToString(two_match));
-	}
+    static void TwoMatchTitle(const char *label, TwoMatch &two_match)
+    {
+        ImGui::Text(label);
+        ImGui::SameLine();
+        ImGui::Text(utility::ToString(two_match));
+    }
 
-	static void TopNPlayerTable(const char *label, TopNTable<Player> *p_table, ImVec2 size = ImVec2(200, 0))
-	{
-		TopNTable<Player> &table = *p_table;
+    static void TopNPlayerTable(const char *label, TopNTable<Player> *p_table, ImVec2 size = ImVec2(200, 0))
+    {
+        TopNTable<Player> &table = *p_table;
 
-		PushID(p_table);
-		ImGui::BeginChild(label, size);
-		ImGui::Columns(1);
-		// header
-		ImGui::Separator();
-		ImGui::Text(label); ImGui::NextColumn();
-		ImGui::Separator();
+        PushID(p_table);
+        ImGui::BeginChild(label, size);
+        ImGui::Columns(1);
+        // header
+        ImGui::Separator();
+        ImGui::Text(label); ImGui::NextColumn();
+        ImGui::Separator();
 
-		ImGui::Columns(3);
-		for (int i = 0; i < table.Keys.size(); ++i) {
-			auto player = table.Keys[i];
-			if (!player) {
-				break;
-			}
+        ImGui::Columns(3);
+        for (int i = 0; i < table.Keys.size(); ++i) {
+            auto player = table.Keys[i];
+            if (!player) {
+                break;
+            }
 
-			ImGui::Text("%d", i + 1); ImGui::NextColumn();
-			ImGui::Text(player->name); ImGui::NextColumn();
-			ImGui::Text("%d", table.Values[i]); ImGui::NextColumn();
-		}
-		ImGui::Separator();
-		ImGui::Columns(1);
-		ImGui::EndChild();
-		PopID();
-	}
+            ImGui::Text("%d", i + 1); ImGui::NextColumn();
+            ImGui::Text(player->name); ImGui::NextColumn();
+            ImGui::Text("%d", table.Values[i]); ImGui::NextColumn();
+        }
+        ImGui::Separator();
+        ImGui::Columns(1);
+        ImGui::EndChild();
+        PopID();
+    }
 }

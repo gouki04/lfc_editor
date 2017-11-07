@@ -48,18 +48,18 @@ void SaveDBJson()
 
 void LoadDBBinary()
 {
-	std::ifstream is("data.bin");
-	cereal::BinaryInputArchive archive(is);
+    std::ifstream is("data.bin");
+    cereal::BinaryInputArchive archive(is);
 
-	archive(global_db);
+    archive(global_db);
 }
 
 void SaveDBBinary()
 {
-	std::ofstream os("data.bin");
-	cereal::BinaryOutputArchive archive(os);
+    std::ofstream os("data.bin");
+    cereal::BinaryOutputArchive archive(os);
 
-	archive(global_db);
+    archive(global_db);
 }
 
 void LoadDBXml()
@@ -181,36 +181,36 @@ void Entry()
         //TestDB();
         LoadDBJson();
 
-		//auto friendly_17 = std::make_shared<FriendlyMatch>();
-		//auto friendly_16 = std::make_shared<FriendlyMatch>();
+        //auto friendly_17 = std::make_shared<FriendlyMatch>();
+        //auto friendly_16 = std::make_shared<FriendlyMatch>();
 
-		//friendly_17->event_type = EEventType::FriendlyMatch;
-		//friendly_16->event_type = EEventType::FriendlyMatch;
+        //friendly_17->event_type = EEventType::FriendlyMatch;
+        //friendly_16->event_type = EEventType::FriendlyMatch;
 
-		//std::vector<std::shared_ptr<Event>> new_event_list;
-		//new_event_list.push_back(friendly_17);
-		//new_event_list.push_back(friendly_16);
+        //std::vector<std::shared_ptr<Event>> new_event_list;
+        //new_event_list.push_back(friendly_17);
+        //new_event_list.push_back(friendly_16);
 
   //      for (auto evt : global_db.events) {
-		//	if (evt->event_type == EEventType::FriendlyMatch) {
-		//		auto fm = std::static_pointer_cast<FriendlyMatch>(evt);
-		//		if (fm->begin_time.year >= 2017) {
-		//			friendly_17->matchs.push_back(fm->matchs[0]);
-		//		}
-		//		else {
-		//			friendly_16->matchs.push_back(fm->matchs[0]);
-		//		}
-		//	}
-		//	else {
-		//		new_event_list.push_back(evt);
-		//	}
+        //	if (evt->event_type == EEventType::FriendlyMatch) {
+        //		auto fm = std::static_pointer_cast<FriendlyMatch>(evt);
+        //		if (fm->begin_time.year >= 2017) {
+        //			friendly_17->matchs.push_back(fm->matchs[0]);
+        //		}
+        //		else {
+        //			friendly_16->matchs.push_back(fm->matchs[0]);
+        //		}
+        //	}
+        //	else {
+        //		new_event_list.push_back(evt);
+        //	}
   //      }
 
-		//global_db.events = new_event_list;
-		//for (int i = 0; i < global_db.events.size(); ++i) {
-		//	auto evt = global_db.events[i];
-		//	evt->id = i;
-		//}
+        //global_db.events = new_event_list;
+        //for (int i = 0; i < global_db.events.size(); ++i) {
+        //	auto evt = global_db.events[i];
+        //	evt->id = i;
+        //}
     }
 }
 
@@ -219,9 +219,9 @@ bool draw_gui(bool *show_test_window)
     static bool s_show_edit_player = false;
     static bool s_show_edit_event = false;
     static bool s_show_edit_club = false;
-	static bool s_show_edit_goal = false;
-	static bool s_show_edit_match = false;
-	static bool s_show_analyze_match = false;
+    static bool s_show_edit_goal = false;
+    static bool s_show_edit_match = false;
+    static bool s_show_analyze_match = false;
 
     bool ret = false;
     if (ImGui::BeginMainMenuBar())
@@ -235,9 +235,9 @@ bool draw_gui(bool *show_test_window)
                 if (ImGui::MenuItem("Xml")) {
                     LoadDBXml();
                 }
-				if (ImGui::MenuItem("Binary")) {
-					LoadDBBinary();
-				}
+                if (ImGui::MenuItem("Binary")) {
+                    LoadDBBinary();
+                }
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Save")) {
@@ -247,14 +247,14 @@ bool draw_gui(bool *show_test_window)
                 if (ImGui::MenuItem("Xml")) {
                     SaveDBXml();
                 }
-				if (ImGui::MenuItem("Binary")) {
-					SaveDBBinary();
-				}
+                if (ImGui::MenuItem("Binary")) {
+                    SaveDBBinary();
+                }
                 ImGui::EndMenu();
             }
-			if (ImGui::MenuItem("Clear")) {
-				// TODO clear global_db
-			}
+            if (ImGui::MenuItem("Clear")) {
+                // TODO clear global_db
+            }
             if (ImGui::MenuItem("Quit")) {
                 ret = true;
             }
@@ -275,37 +275,37 @@ bool draw_gui(bool *show_test_window)
             if (ImGui::MenuItem("Goal")) {
                 s_show_edit_goal = true;
             }
-			if (ImGui::MenuItem("Match")) {
-				s_show_edit_match = true;
-			}
+            if (ImGui::MenuItem("Match")) {
+                s_show_edit_match = true;
+            }
             ImGui::EndMenu();
         }
-		if (ImGui::BeginMenu("Sort"))
-		{
-			if (ImGui::MenuItem("Player")) {
-				global_db.SortPlayers();
-			}
-			if (ImGui::MenuItem("Club")) {
-				global_db.SortClubs();
-			}
-			if (ImGui::MenuItem("Event")) {
-				global_db.SortEvents();
-			}
-			if (ImGui::MenuItem("Player In Club")) {
-				global_db.SortPlayersInClubs();
-			}
-			if (ImGui::MenuItem("Match")) {
-				global_db.SortMatchs();
-			}
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Analyze"))
-		{
-			if (ImGui::MenuItem("Match")) {
-				s_show_analyze_match = true;
-			}
-			ImGui::EndMenu();
-		}
+        if (ImGui::BeginMenu("Sort"))
+        {
+            if (ImGui::MenuItem("Player")) {
+                global_db.SortPlayers();
+            }
+            if (ImGui::MenuItem("Club")) {
+                global_db.SortClubs();
+            }
+            if (ImGui::MenuItem("Event")) {
+                global_db.SortEvents();
+            }
+            if (ImGui::MenuItem("Player In Club")) {
+                global_db.SortPlayersInClubs();
+            }
+            if (ImGui::MenuItem("Match")) {
+                global_db.SortMatchs();
+            }
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Analyze"))
+        {
+            if (ImGui::MenuItem("Match")) {
+                s_show_analyze_match = true;
+            }
+            ImGui::EndMenu();
+        }
         if (ImGui::BeginMenu("Help"))
         {
             if (ImGui::MenuItem("Demo")) {
@@ -332,13 +332,13 @@ bool draw_gui(bool *show_test_window)
         ShowGoalWindow(&s_show_edit_goal);
     }
 
-	if (s_show_edit_match) {
-		ShowMatchWindow(&s_show_edit_match);
-	}
+    if (s_show_edit_match) {
+        ShowMatchWindow(&s_show_edit_match);
+    }
 
-	if (s_show_analyze_match) {
-		ShowAnalyzeMatchWindow(&s_show_analyze_match);
-	}
+    if (s_show_analyze_match) {
+        ShowAnalyzeMatchWindow(&s_show_analyze_match);
+    }
 
     ShowEditMatchWindow();
     ShowEditGoalWindow();

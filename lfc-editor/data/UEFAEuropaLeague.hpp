@@ -48,6 +48,9 @@ namespace lfc
     struct UEFAEuropaLeague : public Event
     {
         // 资格赛
+        TwoMatch qualifying;
+
+        // 附加赛
         TwoMatch play_off;
 
         // 小组赛
@@ -107,12 +110,12 @@ namespace lfc
                 }
             }
 
-            if (play_off.second) {
-                auto result = play_off.GetResult();
+            if (qualifying.second) {
+                auto result = qualifying.GetResult();
                 return result == EMatchResult::Win ? EUEFAEuropaLeagueResult::Group4th : EUEFAEuropaLeagueResult::PlayOff;
             }
 
-            if (play_off.first) {
+            if (qualifying.first) {
                 return EUEFAEuropaLeagueResult::PlayOff;
             }
 
@@ -128,8 +131,8 @@ namespace lfc
 
         virtual void FillMatchs(std::vector<std::shared_ptr<Match>> &to_fill)
         {
-            FillMatch(to_fill, play_off.first);
-            FillMatch(to_fill, play_off.second);
+            FillMatch(to_fill, qualifying.first);
+            FillMatch(to_fill, qualifying.second);
             FillMatch(to_fill, group_state.matches);
             FillMatch(to_fill, round_of_32.first);
             FillMatch(to_fill, round_of_32.second);
@@ -145,7 +148,7 @@ namespace lfc
 		template<class Archive>
 		void save(Archive &archive) const
 		{
-			archive(cereal::base_class<Event>(this), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
+			archive(cereal::base_class<Event>(this), CEREAL_NVP(qualifying), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
 				CEREAL_NVP(round_of_32), CEREAL_NVP(round_of_16), CEREAL_NVP(quarter_final), CEREAL_NVP(semi_final),
 				CEREAL_NVP(final));
 		}
@@ -153,7 +156,7 @@ namespace lfc
         template<class Archive>
         void load(Archive &archive)
         {
-            archive(cereal::base_class<Event>(this), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
+            archive(cereal::base_class<Event>(this), CEREAL_NVP(qualifying), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
                 CEREAL_NVP(round_of_32), CEREAL_NVP(round_of_16), CEREAL_NVP(quarter_final), CEREAL_NVP(semi_final),
                 CEREAL_NVP(final));
         }
