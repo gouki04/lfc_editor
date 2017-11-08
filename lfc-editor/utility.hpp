@@ -195,7 +195,20 @@ namespace utility
     std::string ToString(std::shared_ptr<Goal> goal)
     {
         std::stringstream ss;
-        ss << ToString(goal->time) << ToString(goal->score_player);
+        ss << ToString(goal->time);
+
+        if (goal->type == EGoalType::Penalty) {
+            ss << utf8("(penalty)");
+        }
+        else if (goal->type == EGoalType::OwnGoal) {
+            ss << utf8("(own goal)");
+        }
+
+        ss << ToString(goal->score_player);
+
+        if (goal->assist_player) {
+            ss << " (" << ToString(goal->assist_player) << ")";
+        }
 
         return ss.str();
     }

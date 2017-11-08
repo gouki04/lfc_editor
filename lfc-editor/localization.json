@@ -25,7 +25,7 @@
             },{
                 "key": "qualifying",
                 "value": "资格赛"
-			},{
+			      },{
                 "key": "play off",
                 "value": "附加赛"
             },{
@@ -64,6 +64,9 @@
             },{
                 "key": "(penalty)",
                 "value": "(点)"
+            },{
+                "key": "(own goal)",
+                "value": "(OG)"
             },{
                 "key": "pl table position",
                 "value": "排名" 
