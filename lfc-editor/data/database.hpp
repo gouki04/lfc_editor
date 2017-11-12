@@ -38,6 +38,7 @@ namespace lfc
         std::vector<std::shared_ptr<Goal>> goals;
         std::vector<std::shared_ptr<Match>> matchs;
         std::vector<std::shared_ptr<Event>> events;
+        std::vector<std::shared_ptr<DateRange>> dates;
 
         std::shared_ptr<Match> selected_match;
         std::shared_ptr<Goal> selected_goal;
@@ -51,6 +52,11 @@ namespace lfc
         void SortMatchs()
         {
             sort(matchs.begin(), matchs.end(), sort_match_by_begin_date);
+        }
+
+        void SortMatchs(std::vector<std::shared_ptr<Match>> &_matchs)
+        {
+            sort(_matchs.begin(), _matchs.end(), sort_match_by_begin_date);
         }
 
         void SortPlayers()

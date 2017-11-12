@@ -23,6 +23,18 @@ namespace lfc
             return false;
         }
 
+        bool RemovePlayer(std::shared_ptr<Player> player)
+        {
+            for (auto itr = players.begin(); itr != players.end(); ++itr) {
+                if (*itr == player) {
+                    players.erase(itr);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         template<class Archive>
         void save(Archive &archive) const
         {

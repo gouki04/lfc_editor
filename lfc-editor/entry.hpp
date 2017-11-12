@@ -9,6 +9,7 @@
 #include "utility.hpp"
 #include "window/EditPlayerWindow.hpp"
 #include "window/EditEventWindow.hpp"
+#include "window/EditClubWindow.hpp"
 #include "window/AnalyzeMatchWindow.hpp"
 #include "Localization.hpp"
 

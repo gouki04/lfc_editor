@@ -124,6 +124,8 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
             }
         }
 
+        global_db.SortMatchs(all_matchs);
+
         AnalyzeMatchResult result;
         std::map<std::shared_ptr<Player>, AnalyzePlayerData> player_datas;
         for (auto match : all_matchs) {

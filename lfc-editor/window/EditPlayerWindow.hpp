@@ -10,6 +10,15 @@ static void ShowEditPlayerWindow(bool* p_open)
     {
         // left
         ImGui::BeginChild("player pane", ImVec2(300, 0), true);
+
+        char buf[128];
+
+        static std::string filter_player_name;
+        sprintf(buf, filter_player_name.c_str());
+        if (ImGui::InputText("filter", buf, 128)) {
+            filter_player_name = std::string(buf);
+        }
+
         ImGui::Columns(4);
         // header
         ImGui::Separator();
@@ -21,6 +30,12 @@ static void ShowEditPlayerWindow(bool* p_open)
 
         for (size_t i = 0; i < global_db.players.size(); i++) {
             auto player = global_db.players[i];
+
+            if (filter_player_name.size() > 0 &&
+                player->name.find(filter_player_name) == std::string::npos &&
+                player->en_name.find(filter_player_name) == std::string::npos) {
+                continue;
+            }
 
             char label[32];
             sprintf(label, "%04d", player->id);
@@ -103,6 +118,14 @@ static void ShowEditPlayerWindow(bool* p_open)
 
             ImGui::LabelText("goals", "%d", goal_cnt);
             ImGui::LabelText("assists", "%d", assist_cnt);
+            ImGui::LabelText("total", "%d", goal_cnt + assist_cnt);
+
+            for (size_t i = 0; i < global_db.clubs.size(); ++i) {
+                auto club = global_db.clubs[i];
+                if (club->HasPlayer(player)) {
+                    ImGui::LabelText("", "%s", club->name);
+                }
+            }
         }
 
         ImGui::EndChild();

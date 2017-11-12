@@ -93,10 +93,11 @@
       <AdditionalIncludeDirectories>$(SolutionDir)glfw\include;$(SolutionDir)cereal-1.2.2\include;$(SolutionDir)imgui;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)glfw\lib-vc2010-64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -167,6 +168,7 @@
     <ClInclude Include="TopNTable.hpp" />
     <ClInclude Include="utility.hpp" />
     <ClInclude Include="window\AnalyzeMatchWindow.hpp" />
+    <ClInclude Include="window\EditClubWindow.hpp" />
     <ClInclude Include="window\EditEventWindow.hpp" />
     <ClInclude Include="window\EditPlayerWindow.hpp" />
   </ItemGroup>

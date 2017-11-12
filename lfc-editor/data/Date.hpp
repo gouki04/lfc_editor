@@ -156,4 +156,31 @@ namespace lfc
             archive(CEREAL_NVP(year), CEREAL_NVP(month), CEREAL_NVP(day));
         }
     };
+
+    struct DateRange
+    {
+        std::string name;
+        Date begin;
+        Date end;
+
+        bool Contains(Date date) 
+        {
+            if (!begin.IsValid()) {
+                if (!end.IsValid()) {
+                    return true;
+                }
+                else {
+                    return date <= end;
+                }
+            }
+            else {
+                if (!end.IsValid()) {
+                    return date >= begin;
+                }
+                else {
+                    return date >= begin && date <= end;
+                }
+            }
+        }
+    };
 }
