@@ -145,13 +145,13 @@ namespace lfc
             FillMatch(to_fill, final);
         }
 
-		template<class Archive>
-		void save(Archive &archive) const
-		{
-			archive(cereal::base_class<Event>(this), CEREAL_NVP(qualifying), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
-				CEREAL_NVP(round_of_32), CEREAL_NVP(round_of_16), CEREAL_NVP(quarter_final), CEREAL_NVP(semi_final),
-				CEREAL_NVP(final));
-		}
+        template<class Archive>
+        void save(Archive &archive) const
+        {
+            archive(cereal::base_class<Event>(this), CEREAL_NVP(qualifying), CEREAL_NVP(play_off), CEREAL_NVP(group_state),
+                CEREAL_NVP(round_of_32), CEREAL_NVP(round_of_16), CEREAL_NVP(quarter_final), CEREAL_NVP(semi_final),
+                CEREAL_NVP(final));
+        }
 
         template<class Archive>
         void load(Archive &archive)
