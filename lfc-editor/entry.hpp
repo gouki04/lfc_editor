@@ -7,9 +7,16 @@
 #include <cereal/types/memory.hpp>
 #include "data/database.hpp"
 #include "utility.hpp"
-#include "window/EditPlayerWindow.hpp"
-#include "window/EditEventWindow.hpp"
-#include "window/EditClubWindow.hpp"
+
+#include "window/PlayerListWindow.hpp"
+#include "window/EventListWindow.hpp"
+#include "window/ClubListWindow.hpp"
+#include "window/MatchListWindow.hpp"
+#include "window/GoalListWindow.hpp"
+
+#include "window/EditMatchWindow.hpp"
+#include "window/EditGoalWindow.hpp"
+
 #include "window/AnalyzeMatchWindow.hpp"
 #include "Localization.hpp"
 
@@ -225,10 +232,8 @@ bool draw_gui(bool *show_test_window)
     static bool s_show_analyze_match = false;
 
     bool ret = false;
-    if (ImGui::BeginMainMenuBar())
-    {
-        if (ImGui::BeginMenu("File"))
-        {
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("File")) {
             if (ImGui::BeginMenu("Open")) {
                 if (ImGui::MenuItem("Json")) {
                     LoadDBJson();
@@ -262,8 +267,7 @@ bool draw_gui(bool *show_test_window)
 
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Edit"))
-        {
+        if (ImGui::BeginMenu("Edit")) {
             if (ImGui::MenuItem("Player")) {
                 s_show_edit_player = true;
             }
@@ -281,8 +285,7 @@ bool draw_gui(bool *show_test_window)
             }
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Sort"))
-        {
+        if (ImGui::BeginMenu("Sort")) {
             if (ImGui::MenuItem("Player")) {
                 global_db.SortPlayers();
             }
@@ -300,15 +303,13 @@ bool draw_gui(bool *show_test_window)
             }
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Analyze"))
-        {
+        if (ImGui::BeginMenu("Analyze")) {
             if (ImGui::MenuItem("Match")) {
                 s_show_analyze_match = true;
             }
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Help"))
-        {
+        if (ImGui::BeginMenu("Help")) {
             if (ImGui::MenuItem("Demo")) {
                 *show_test_window = true;
             }
@@ -318,23 +319,23 @@ bool draw_gui(bool *show_test_window)
     }
 
     if (s_show_edit_player) {
-        ShowEditPlayerWindow(&s_show_edit_player);
+        ShowPlayerListWindow(&s_show_edit_player);
     }
 
     if (s_show_edit_event) {
-        ShowEventWindow(&s_show_edit_event);
+        ShowEventListWindow(&s_show_edit_event);
     }
 
     if (s_show_edit_club) {
-        ShowClubWindow(&s_show_edit_club);
+        ShowClubListWindow(&s_show_edit_club);
     }
 
     if (s_show_edit_goal) {
-        ShowGoalWindow(&s_show_edit_goal);
+        ShowGoalListWindow(&s_show_edit_goal);
     }
 
     if (s_show_edit_match) {
-        ShowMatchWindow(&s_show_edit_match);
+        ShowMatchListWindow(&s_show_edit_match);
     }
 
     if (s_show_analyze_match) {

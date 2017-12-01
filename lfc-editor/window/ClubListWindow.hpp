@@ -6,7 +6,7 @@
 
 using namespace lfc;
 
-static void ShowClubWindow(bool* p_open)
+static void ShowClubListWindow(bool* p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(400, 440), ImGuiCond_FirstUseEver);
     if (ImGui::Begin("Edit Club", p_open)) {

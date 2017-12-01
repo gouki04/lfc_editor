@@ -3,7 +3,7 @@
 #include "data\database.hpp"
 #include "utility.hpp"
 
-static void ShowEditPlayerWindow(bool* p_open)
+static void ShowPlayerListWindow(bool* p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
     if (ImGui::Begin("Edit Player", p_open))

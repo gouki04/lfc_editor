@@ -387,7 +387,22 @@ namespace ImGui
     static bool MatchButton(const char *label, std::shared_ptr<Match> *p_match)
     {
         auto match = *p_match;
-        ImGui::LabelText(label, utility::ToString(match));
+        if (!match) {
+            ImGui::LabelText(label, "------");
+        }
+        else if (match->GetResult() == EMatchResult::Win) {
+            ImGui::LabelTextColored(ImColor(255, 0, 0), label, utility::ToString(match).c_str());
+        }
+        else if (match->GetResult() == EMatchResult::Draw) {
+            ImGui::LabelTextColored(ImColor(0, 255, 0), label, utility::ToString(match).c_str());
+        }
+        else if (match->GetResult() == EMatchResult::Lose) {
+            ImGui::LabelTextColored(ImColor(0, 0, 255), label, utility::ToString(match).c_str());
+        }
+        else {
+            ImGui::LabelText(label, utility::ToString(match).c_str());
+        }
+
         ImGui::SameLine();
         if (match) {
             if (match == global_db.selected_match) {

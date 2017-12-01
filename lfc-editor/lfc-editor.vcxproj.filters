@@ -104,13 +104,25 @@
     <ClInclude Include="window\AnalyzeMatchWindow.hpp">
       <Filter>window</Filter>
     </ClInclude>
-    <ClInclude Include="window\EditEventWindow.hpp">
+    <ClInclude Include="window\MatchListWindow.hpp">
       <Filter>window</Filter>
     </ClInclude>
-    <ClInclude Include="window\EditPlayerWindow.hpp">
+    <ClInclude Include="window\PlayerListWindow.hpp">
       <Filter>window</Filter>
     </ClInclude>
-    <ClInclude Include="window\EditClubWindow.hpp">
+    <ClInclude Include="window\ClubListWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\EditMatchWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\GoalListWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\EditGoalWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\EventListWindow.hpp">
       <Filter>window</Filter>
     </ClInclude>
   </ItemGroup>

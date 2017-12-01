@@ -168,9 +168,13 @@
     <ClInclude Include="TopNTable.hpp" />
     <ClInclude Include="utility.hpp" />
     <ClInclude Include="window\AnalyzeMatchWindow.hpp" />
-    <ClInclude Include="window\EditClubWindow.hpp" />
-    <ClInclude Include="window\EditEventWindow.hpp" />
-    <ClInclude Include="window\EditPlayerWindow.hpp" />
+    <ClInclude Include="window\ClubListWindow.hpp" />
+    <ClInclude Include="window\EventListWindow.hpp" />
+    <ClInclude Include="window\EditGoalWindow.hpp" />
+    <ClInclude Include="window\EditMatchWindow.hpp" />
+    <ClInclude Include="window\GoalListWindow.hpp" />
+    <ClInclude Include="window\MatchListWindow.hpp" />
+    <ClInclude Include="window\PlayerListWindow.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\imgui\imgui.cpp" />
