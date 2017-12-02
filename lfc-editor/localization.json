@@ -118,6 +118,24 @@
             },{
                 "key": "create goal table",
                 "value": "创造进球榜" 
+            },{
+                "key": "match with goal count",
+                "value": "进球场次" 
+            },{
+                "key": "match with no goal against count",
+                "value": "零封场次"
+            },{
+                "key": "max goal at one match",
+                "value": "单场最多进球（%d）"
+            },{
+                "key": "max goal against at one match",
+                "value": "单场最多丢球（%d）"
+            },{
+                "key": "max goal difference at one match",
+                "value": "单场最大比分胜利（%d）"
+            },{
+                "key": "min goal difference at one match",
+                "value": "单场最大比分失利（%d）"
             }
         ]
     }
