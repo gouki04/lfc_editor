@@ -454,6 +454,20 @@ namespace ImGui
         ImGui::Text(utility::ToString(two_match));
     }
 
+	static void ColumnHeaders(int count, ...)
+	{
+		if (ImGui::IsKeyDown(GLFW_KEY_LEFT_SHIFT)) {
+			ImGui::Columns(count);
+			ImGui::ShowColumnsNorm();
+		}
+		else {
+			va_list args;
+			va_start(args, count);
+			ImGui::FixedColumnsV(count, args);
+			va_end(args);
+		}
+	}
+
     static void TopNPlayerTable(const char *label, TopNTable<Player> *p_table, ImVec2 size = ImVec2(200, 0))
     {
         TopNTable<Player> &table = *p_table;
@@ -466,7 +480,7 @@ namespace ImGui
         ImGui::Text(label); ImGui::NextColumn();
         ImGui::Separator();
 
-        ImGui::Columns(3);
+        ImGui::ColumnHeaders(3, 0.1, 0.7, 0.2);
         for (int i = 0; i < table.Keys.size(); ++i) {
             auto player = table.Keys[i];
             if (!player) {

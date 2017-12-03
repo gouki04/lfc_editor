@@ -22,7 +22,7 @@ static void ShowClubListWindow(bool* p_open)
             filter_club_name = std::string(buf);
         }
 
-        ImGui::Columns(2);
+        ImGui::ColumnHeaders(2, 0.25, 0.75);
         // header
         ImGui::Separator();
         ImGui::Text("id"); ImGui::NextColumn();
@@ -75,7 +75,7 @@ static void ShowClubListWindow(bool* p_open)
             club->en_name = std::string(buf);
         }
 
-        ImGui::Columns(3);
+        ImGui::ColumnHeaders(3, 0.6, 0.25, 0.15);
         // header
         ImGui::Separator();
         ImGui::Text("name"); ImGui::NextColumn();
@@ -119,7 +119,7 @@ static void ShowClubListWindow(bool* p_open)
             filter_player_name = std::string(buf);
         }
 
-        ImGui::Columns(3);
+        ImGui::ColumnHeaders(3, 0.55, 0.25, 0.2);
         // header
         ImGui::Separator();
         ImGui::Text("name"); ImGui::NextColumn();

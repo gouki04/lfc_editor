@@ -19,7 +19,7 @@ static void ShowPlayerListWindow(bool* p_open)
             filter_player_name = std::string(buf);
         }
 
-        ImGui::Columns(4);
+        ImGui::ColumnHeaders(4, 0.15, 0.5, 0.1, 0.25);
         // header
         ImGui::Separator();
         ImGui::Text("id"); ImGui::NextColumn();

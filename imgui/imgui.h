@@ -239,8 +239,11 @@ namespace ImGui
     IMGUI_API int           GetColumnIndex();                                                   // get current column index
     IMGUI_API float         GetColumnOffset(int column_index = -1);                             // get position of column line (in pixels, from the left side of the contents region). pass -1 to use current column, otherwise 0..GetcolumnsCount() inclusive. column 0 is usually 0.0f and not resizable unless you call this
     IMGUI_API void          SetColumnOffset(int column_index, float offset_x);                  // set position of column line (in pixels, from the left side of the contents region). pass -1 to use current column
-    IMGUI_API float         GetColumnWidth(int column_index = -1);                              // column width (== GetColumnOffset(GetColumnIndex()+1) - GetColumnOffset(GetColumnOffset())
-    IMGUI_API int           GetColumnsCount();                                                  // number of columns (what was passed to Columns())
+    IMGUI_API float         GetColumnWidth(int column_index = -1);                              // column width (== GetColumnOffset(GetColumnIndex()+1) - GetColumnOffset(GetColumnIndex())
+	IMGUI_API int           GetColumnsCount();                                                  // number of columns (what was passed to Columns())
+	IMGUI_API void          FixedColumns(int count, ...);                                       // 
+	IMGUI_API void          FixedColumnsV(int count, va_list args);                             // 
+	IMGUI_API void          ShowColumnsNorm();                                                  // 
 
     // ID scopes
     // If you are creating widgets in a loop you most likely want to push a unique identifier so ImGui can differentiate them.
@@ -582,7 +585,7 @@ enum ImGuiSelectableFlags_
 // User fill ImGuiIO.KeyMap[] array with indices into the ImGuiIO.KeysDown[512] array
 enum ImGuiKey_
 {
-    ImGuiKey_Tab,       // for tabbing through fields
+	ImGuiKey_Tab,       // for tabbing through fields
     ImGuiKey_LeftArrow, // for text edit
     ImGuiKey_RightArrow,// for text edit
     ImGuiKey_UpArrow,   // for text edit

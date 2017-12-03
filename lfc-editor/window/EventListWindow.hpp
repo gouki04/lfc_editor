@@ -21,7 +21,8 @@ static void ShowEventListWindow(bool* p_open)
         // left
         static int selected = 0;
         ImGui::BeginChild("event pane", ImVec2(300, 0), true);
-        ImGui::Columns(4);
+		ImGui::ColumnHeaders(4, 0.15f, 0.35f, 0.25f, 0.25f);
+
         // header
         ImGui::Separator();
         ImGui::Text(utf8("id")); ImGui::NextColumn();
@@ -136,7 +137,7 @@ static void ShowEventListWindow(bool* p_open)
             auto pl = std::static_pointer_cast<PremierLeague>(event);
             ImGui::PushID(pl.get());
 
-            ImGui::Columns(5);
+            ImGui::ColumnHeaders(5, 0.2, 0.2, 0.2, 0.2, 0.2);
             // header
             ImGui::Separator();
             ImGui::Text(utf8("pl table position")); ImGui::NextColumn();

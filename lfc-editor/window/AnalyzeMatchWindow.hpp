@@ -142,8 +142,8 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
         ImGui::EndChild();
         ImGui::SameLine();
 
-        ImGui::BeginChild("match pane", ImVec2(500, 0), true);
-        ImGui::Columns(3);
+        ImGui::BeginChild("match pane", ImVec2(300, 0), true);
+        ImGui::ColumnHeaders(3, 0.15, 0.55, 0.3);
 
         // header
         ImGui::Separator();
