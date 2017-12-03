@@ -123,7 +123,7 @@ static void ShowPlayerListWindow(bool* p_open)
             for (size_t i = 0; i < global_db.clubs.size(); ++i) {
                 auto club = global_db.clubs[i];
                 if (club->HasPlayer(player)) {
-                    ImGui::LabelText("", "%s", club->name);
+                    ImGui::LabelText("", "%s", club->name.c_str());
                 }
             }
         }
