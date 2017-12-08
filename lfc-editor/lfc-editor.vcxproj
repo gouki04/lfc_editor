@@ -169,6 +169,7 @@
     <ClInclude Include="utility.hpp" />
     <ClInclude Include="window\AnalyzeMatchWindow.hpp" />
     <ClInclude Include="window\ClubListWindow.hpp" />
+    <ClInclude Include="window\DateRangeListWindow.hpp" />
     <ClInclude Include="window\EventListWindow.hpp" />
     <ClInclude Include="window\EditGoalWindow.hpp" />
     <ClInclude Include="window\EditMatchWindow.hpp" />

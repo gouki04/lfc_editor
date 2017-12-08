@@ -182,5 +182,11 @@ namespace lfc
                 }
             }
         }
+
+        template<class Archive>
+        void serialize(Archive &archive)
+        {
+            archive(CEREAL_NVP(name), CEREAL_NVP(begin), CEREAL_NVP(end));
+        }
     };
 }

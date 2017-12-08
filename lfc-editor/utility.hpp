@@ -355,6 +355,52 @@ namespace ImGui
         }
     }
 
+    // date range
+    static bool date_range_getter(void *data, int idx, const char** out_text)
+    {
+        auto date_ranges = (std::vector<std::shared_ptr<DateRange>>*)data;
+
+        if (idx == 0) {
+            *out_text = "null";
+        }
+        else {
+            *out_text = (*date_ranges)[idx - 1]->name.c_str();
+        }
+        return true;
+    }
+
+    static int get_date_range_index(std::vector<std::shared_ptr<DateRange>> &date_ranges, std::shared_ptr<DateRange> date_range)
+    {
+        if (date_range == nullptr) {
+            return 0;
+        }
+
+        auto itr = std::find(date_ranges.begin(), date_ranges.end(), date_range);
+        if (itr == date_ranges.end()) {
+            return 0;
+        }
+
+        return itr - date_ranges.begin() + 1;
+    }
+
+    static void DateRangeCombo(const char *label, std::shared_ptr<DateRange> *p_date_range, std::vector<std::shared_ptr<DateRange>> *date_ranges = nullptr)
+    {
+        if (date_ranges == nullptr) {
+            date_ranges = &global_db.date_ranges;
+        }
+
+        auto date_range = *p_date_range;
+        auto index = get_date_range_index(*date_ranges, date_range);
+        if (ImGui::Combo(label, &index, date_range_getter, date_ranges, date_ranges->size() + 1)) {
+            if (index == 0) {
+                *p_date_range = nullptr;
+            }
+            else {
+                *p_date_range = (*date_ranges)[index - 1];
+            }
+        }
+    }
+
     static void Text(const std::string &txt)
     {
         ImGui::Text(txt.c_str());
@@ -454,19 +500,19 @@ namespace ImGui
         ImGui::Text(utility::ToString(two_match));
     }
 
-	static void ColumnHeaders(int count, ...)
-	{
-		if (ImGui::IsKeyDown(GLFW_KEY_LEFT_SHIFT)) {
-			ImGui::Columns(count);
-			ImGui::ShowColumnsNorm();
-		}
-		else {
-			va_list args;
-			va_start(args, count);
-			ImGui::FixedColumnsV(count, args);
-			va_end(args);
-		}
-	}
+    static void ColumnHeaders(int count, ...)
+    {
+        if (ImGui::IsKeyDown(GLFW_KEY_LEFT_SHIFT)) {
+            ImGui::Columns(count);
+            ImGui::ShowColumnsNorm();
+        }
+        else {
+            va_list args;
+            va_start(args, count);
+            ImGui::FixedColumnsV(count, args);
+            va_end(args);
+        }
+    }
 
     static void TopNPlayerTable(const char *label, TopNTable<Player> *p_table, ImVec2 size = ImVec2(200, 0))
     {

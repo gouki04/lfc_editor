@@ -13,6 +13,7 @@
 #include "window/ClubListWindow.hpp"
 #include "window/MatchListWindow.hpp"
 #include "window/GoalListWindow.hpp"
+#include "window/DateRangeListWindow.hpp"
 
 #include "window/EditMatchWindow.hpp"
 #include "window/EditGoalWindow.hpp"
@@ -230,6 +231,7 @@ bool draw_gui(bool *show_test_window)
     static bool s_show_edit_goal = false;
     static bool s_show_edit_match = false;
     static bool s_show_analyze_match = false;
+    static bool s_show_edit_date_range = false;
 
     bool ret = false;
     if (ImGui::BeginMainMenuBar()) {
@@ -282,6 +284,9 @@ bool draw_gui(bool *show_test_window)
             }
             if (ImGui::MenuItem("Match")) {
                 s_show_edit_match = true;
+            }
+            if (ImGui::MenuItem("DateRange")) {
+                s_show_edit_date_range = true;
             }
             ImGui::EndMenu();
         }
@@ -340,6 +345,10 @@ bool draw_gui(bool *show_test_window)
 
     if (s_show_analyze_match) {
         ShowAnalyzeMatchWindow(&s_show_analyze_match);
+    }
+
+    if (s_show_edit_date_range) {
+        ShowDateRangeListWindow(&s_show_edit_date_range);
     }
 
     ShowEditMatchWindow();

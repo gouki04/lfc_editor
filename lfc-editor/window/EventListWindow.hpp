@@ -21,7 +21,7 @@ static void ShowEventListWindow(bool* p_open)
         // left
         static int selected = 0;
         ImGui::BeginChild("event pane", ImVec2(300, 0), true);
-		ImGui::ColumnHeaders(4, 0.15f, 0.35f, 0.25f, 0.25f);
+        ImGui::ColumnHeaders(4, 0.15f, 0.35f, 0.25f, 0.25f);
 
         // header
         ImGui::Separator();

@@ -39,6 +39,7 @@ namespace lfc
         std::vector<std::shared_ptr<Match>> matchs;
         std::vector<std::shared_ptr<Event>> events;
         std::vector<std::shared_ptr<DateRange>> dates;
+        std::vector<std::shared_ptr<DateRange>> date_ranges;
 
         std::shared_ptr<Match> selected_match;
         std::shared_ptr<Goal> selected_goal;
@@ -105,9 +106,15 @@ namespace lfc
         }
 
         template<class Archive>
-        void serialize(Archive &archive)
+        void save(Archive &archive) const
         {
-            archive(CEREAL_NVP(players), CEREAL_NVP(clubs), CEREAL_NVP(goals), CEREAL_NVP(matchs), CEREAL_NVP(events), CEREAL_NVP(LFC));
+            archive(CEREAL_NVP(players), CEREAL_NVP(clubs), CEREAL_NVP(goals), CEREAL_NVP(matchs), CEREAL_NVP(events), CEREAL_NVP(LFC), CEREAL_NVP(date_ranges));
+        }
+
+        template<class Archive>
+        void load(Archive &archive)
+        {
+            archive(CEREAL_NVP(players), CEREAL_NVP(clubs), CEREAL_NVP(goals), CEREAL_NVP(matchs), CEREAL_NVP(events), CEREAL_NVP(LFC), CEREAL_NVP(date_ranges));
         }
     };
 }
