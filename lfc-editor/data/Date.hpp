@@ -8,10 +8,10 @@ namespace lfc
     {
         double total_seconds;
 
-        int TotalYears()
+        float TotalYears()
         {
             if (IsValid()) {
-                return (int)floor(total_seconds / (24.0 * 60 * 60) / 365.0);
+                return total_seconds / (24.0 * 60 * 60) / 365.0;
             }
             else {
                 return -1;

@@ -34,7 +34,7 @@ namespace lfc
 
         int GetAge()
         {
-            return (Date::Now() - born_time).TotalYears();
+            return (int)floor((Date::Now() - born_time).TotalYears());
         }
 
 		template<class Archive>

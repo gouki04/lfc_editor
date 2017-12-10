@@ -75,7 +75,6 @@ static void ShowPlayerListWindow(bool* p_open)
         if (player) {
             ImGui::LabelText("id", "%d", player->id);
 
-            char buf[128];
             sprintf(buf, player->name.c_str());
             if (ImGui::InputText("name", buf, 128)) {
                 player->name = std::string(buf);
@@ -95,12 +94,23 @@ static void ShowPlayerListWindow(bool* p_open)
                 ImGui::DateEdit("born", &player->detail->born_time);
                 ImGui::DateEdit("join", &player->detail->join_time);
                 ImGui::DateEdit("leave", &player->detail->leave_time);
+
+                if (player->detail->born_time.IsValid()) {
+                    ImGui::LabelText("age", "%d", player->detail->GetAge());
+                }
+
+                if (player->detail->join_time.IsValid() && player->detail->leave_time.IsValid()) {
+                    auto diff = player->detail->leave_time - player->detail->join_time;
+                    ImGui::LabelText("join time", "%.1f", diff.TotalYears());
+                }
             }
             else {
                 if (ImGui::Button("+")) {
                     player->detail = std::make_shared<PlayerDetailInfo>();
                 }
             }
+
+            ImGui::Separator();
 
             int goal_cnt = 0;
             int assist_cnt = 0;

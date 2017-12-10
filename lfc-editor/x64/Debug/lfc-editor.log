@@ -1,0 +1,8 @@
+﻿    正在创建库 E:\GitHub\lfc_editor\x64\Debug\lfc-editor.lib 和对象 E:\GitHub\lfc_editor\x64\Debug\lfc-editor.exp
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+glfw3.lib(init.obj) : warning LNK4217: 本地定义的符号 vsnprintf 在函数 _glfwInputError 中导入
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: 已导入本地定义的符号 vsnprintf
+glfw3.lib(context.obj) : warning LNK4217: 本地定义的符号 sscanf 在函数 parseVersionString 中导入
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: 已导入本地定义的符号 _vsnprintf
+  lfc-editor.vcxproj -> E:\GitHub\lfc_editor\x64\Debug\lfc-editor.exe
+  lfc-editor.vcxproj -> E:\GitHub\lfc_editor\x64\Debug\lfc-editor.pdb (Full PDB)
