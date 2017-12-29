@@ -325,8 +325,8 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
         ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_win / result.total_played); ImGui::NextColumn();
         ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_goal / result.total_played); ImGui::NextColumn();
         ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_against / result.total_played); ImGui::NextColumn();
-        ImGui::Text("%d", result.match_count_with_goals); ImGui::NextColumn();
-        ImGui::Text("%d", result.match_count_with_no_goal_againsted); ImGui::NextColumn();
+        ImGui::Text("%d (%d%%)", result.match_count_with_goals, (int)(100.f * result.match_count_with_goals / result.total_played)); ImGui::NextColumn();
+        ImGui::Text("%d (%d%%)", result.match_count_with_no_goal_againsted, (int)(100.f * result.match_count_with_no_goal_againsted / result.total_played)); ImGui::NextColumn();
         ImGui::Separator();
         ImGui::Columns(1);
 
