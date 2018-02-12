@@ -1,8 +1,57 @@
-﻿    正在创建库 E:\GitHub\lfc_editor\x64\Debug\lfc-editor.lib 和对象 E:\GitHub\lfc_editor\x64\Debug\lfc-editor.exp
-LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
-glfw3.lib(init.obj) : warning LNK4217: 本地定义的符号 vsnprintf 在函数 _glfwInputError 中导入
-MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: 已导入本地定义的符号 vsnprintf
-glfw3.lib(context.obj) : warning LNK4217: 本地定义的符号 sscanf 在函数 parseVersionString 中导入
-MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: 已导入本地定义的符号 _vsnprintf
-  lfc-editor.vcxproj -> E:\GitHub\lfc_editor\x64\Debug\lfc-editor.exe
-  lfc-editor.vcxproj -> E:\GitHub\lfc_editor\x64\Debug\lfc-editor.pdb (Full PDB)
+﻿  main.cpp
+e:\github\lfc_editor\lfc-editor\data\date.hpp(14): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\database.hpp(29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\database.hpp(30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\database.hpp(31): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\database.hpp(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\database.hpp(33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\twomatch.hpp(41): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\twomatch.hpp(42): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\twomatch.hpp(45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\twomatch.hpp(46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(295): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(303): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(337): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(348): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(383): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\utility.hpp(394): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\internationalchampionscup.hpp(56): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\internationalchampionscup.hpp(89): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\internationalchampionscup.hpp(90): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\internationalchampionscup.hpp(93): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\premierleague.hpp(83): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\premierleague.hpp(104): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\data\premierleague.hpp(105): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(40): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(126): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(161): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(188): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(267): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\eventlistwindow.hpp(408): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\matchlistwindow.hpp(63): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\goallistwindow.hpp(69): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\editmatchwindow.hpp(13): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp(240): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp(251): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp(280): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp(281): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\lfc_editor\lfc-editor\topntable.hpp(23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  e:\github\lfc_editor\lfc-editor\topntable.hpp(20): note: while compiling class template member function 'bool TopNTable<lfc::Player>::Push(std::shared_ptr<lfc::Player>,int)'
+  e:\github\lfc_editor\lfc-editor\window\analyzematchwindow.hpp(373): note: see reference to function template instantiation 'bool TopNTable<lfc::Player>::Push(std::shared_ptr<lfc::Player>,int)' being compiled
+  e:\github\lfc_editor\lfc-editor\utility.hpp(521): note: see reference to class template instantiation 'TopNTable<lfc::Player>' being compiled
+  imgui_impl_glfw.cpp
+  imgui_draw.cpp
+  imgui_demo.cpp
+  imgui.cpp
+e:\github\lfc_editor\imgui\imgui.cpp(10059): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  LINK : E:\Github\lfc_editor\x64\Debug\lfc-editor.exe not found or not built by the last incremental link; performing full link
+     Creating library E:\Github\lfc_editor\x64\Debug\lfc-editor.lib and object E:\Github\lfc_editor\x64\Debug\lfc-editor.exp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glfw3.lib(init.obj) : warning LNK4217: locally defined symbol vsnprintf imported in function _glfwInputError
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol vsnprintf imported
+glfw3.lib(context.obj) : warning LNK4217: locally defined symbol sscanf imported in function parseVersionString
+MSVCRTD.lib(vsnprintf.obj) : warning LNK4049: locally defined symbol _vsnprintf imported
+  lfc-editor.vcxproj -> E:\Github\lfc_editor\x64\Debug\lfc-editor.exe
+  lfc-editor.vcxproj -> E:\Github\lfc_editor\x64\Debug\lfc-editor.pdb (Full PDB)

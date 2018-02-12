@@ -13,7 +13,7 @@ public:
 	TopNTable(int capacity)
 	{
 		Keys.resize(capacity, nullptr);
-		Values.resize(capacity, 0);
+		Values.resize(capacity, std::numeric_limits<int>::lowest());
 	}
 
 	bool Push(std::shared_ptr<T> key, int value)

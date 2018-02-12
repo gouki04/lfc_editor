@@ -19,6 +19,7 @@
 #include "window/EditGoalWindow.hpp"
 
 #include "window/AnalyzeMatchWindow.hpp"
+#include "window/AnalyzePrimierLeagueWindow.hpp"
 #include "Localization.hpp"
 
 namespace cereal
@@ -231,6 +232,7 @@ bool draw_gui(bool *show_test_window)
     static bool s_show_edit_goal = false;
     static bool s_show_edit_match = false;
     static bool s_show_analyze_match = false;
+    static bool s_show_analyze_pl = false;
     static bool s_show_edit_date_range = false;
 
     bool ret = false;
@@ -312,6 +314,9 @@ bool draw_gui(bool *show_test_window)
             if (ImGui::MenuItem("Match")) {
                 s_show_analyze_match = true;
             }
+            if (ImGui::MenuItem("PL")) {
+                s_show_analyze_pl = true;
+            }
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Help")) {
@@ -345,6 +350,10 @@ bool draw_gui(bool *show_test_window)
 
     if (s_show_analyze_match) {
         ShowAnalyzeMatchWindow(&s_show_analyze_match);
+    }
+
+    if (s_show_analyze_pl) {
+        ShowAnalyzePrimierLeagueWindow(&s_show_analyze_pl);
     }
 
     if (s_show_edit_date_range) {

@@ -6,59 +6,59 @@
 
 namespace lfc 
 {
-	// 赛事类型
-	enum class EEventType
-	{
-		// 任意
-		Any = 0,
+    // 赛事类型
+    enum class EEventType
+    {
+        // 任意
+        Any = 0,
 
-		// 友谊赛
-		FriendlyMatch = 1,
+        // 友谊赛
+        FriendlyMatch = 1,
 
-		// 英超
-		PremierLeague = 2,
+        // 英超
+        PremierLeague = 2,
 
-		// 欧冠
-		UEFAChampionsLeague = 3,
+        // 欧冠
+        UEFAChampionsLeague = 3,
 
-		// 【友谊赛】英超亚洲杯
-		PremierLeagueAsiaTrophy = 4,
+        // 【友谊赛】英超亚洲杯
+        PremierLeagueAsiaTrophy = 4,
 
-		// 【友谊赛】奥迪杯
-		AudiCup = 5,
+        // 【友谊赛】奥迪杯
+        AudiCup = 5,
 
-		// 联赛杯
-		EFLCup = 6,
+        // 联赛杯
+        EFLCup = 6,
 
-		// 足总杯
-		FACup = 7,
+        // 足总杯
+        FACup = 7,
 
-		// 【友谊赛】国际冠军杯
-		InternationalChampionsCup = 8,
+        // 【友谊赛】国际冠军杯
+        InternationalChampionsCup = 8,
 
-		// 欧联
-		UEFAEuropaLeague = 9,
+        // 欧联
+        UEFAEuropaLeague = 9,
 
         EVENT_MAX,
-	};
+    };
 
-	// 赛事
+    // 赛事
     struct Event
     {
-		// id
+        // id
         int id;
 
-		// 赛事名字
+        // 赛事名字
         std::string name;
 
-		// 开始时间
+        // 开始时间
         Date begin_time;
 
-		// 结束时间
+        // 结束时间
         Date end_time;
 
-		// 赛事类型
-		EEventType event_type;
+        // 赛事类型
+        EEventType event_type;
 
         void FillMatch(std::vector<std::shared_ptr<Match>> &to_fill, std::vector<std::shared_ptr<Match>> &matchs)
         {
@@ -86,17 +86,17 @@ namespace lfc
         //    archive(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(begin_time), CEREAL_NVP(end_time), CEREAL_NVP(event_type));
         //}
 
-		template<class Archive>
-		void save(Archive &archive) const
-		{
-			archive(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(begin_time), CEREAL_NVP(end_time), CEREAL_NVP(event_type));
-		}
+        template<class Archive>
+        void save(Archive &archive) const
+        {
+            archive(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(begin_time), CEREAL_NVP(end_time), CEREAL_NVP(event_type));
+        }
 
-		template<class Archive>
-		void load(Archive &archive)
-		{
-			archive(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(begin_time), CEREAL_NVP(end_time), CEREAL_NVP(event_type));
-		}
+        template<class Archive>
+        void load(Archive &archive)
+        {
+            archive(CEREAL_NVP(id), CEREAL_NVP(name), CEREAL_NVP(begin_time), CEREAL_NVP(end_time), CEREAL_NVP(event_type));
+        }
     };
 }
 

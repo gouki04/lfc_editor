@@ -5,21 +5,21 @@
 #include "data\Player.hpp"
 #include "TopNTable.hpp"
 
-// ±ÈÈü¹ıÂËÆ÷
+// æ¯”èµ›è¿‡æ»¤å™¨
 struct AnalyzeMatchFilter
 {
-    // Ö¸¶¨¶ÔÊÖ
+    // æŒ‡å®šå¯¹æ‰‹
     std::shared_ptr<FootballClub> oppenent_team;
 
-    // Ö÷¿Í³¡
+    // ä¸»å®¢åœº
     EMatchSide side;
 
-    // Ö¸¶¨ÈüÊÂ£¨×éºÏ£©
+    // æŒ‡å®šèµ›äº‹ï¼ˆç»„åˆï¼‰
     long event_flag;
 
     std::shared_ptr<DateRange> date_range;
 
-    // Ö¸¶¨Ê±¼ä¶Î
+    // æŒ‡å®šæ—¶é—´æ®µ
     Date min_date;
     Date max_date;
 
@@ -30,52 +30,52 @@ struct AnalyzeMatchFilter
     }
 };
 
-// ±ÈÈü·ÖÎöµÄÊı¾İ
+// æ¯”èµ›åˆ†æçš„æ•°æ®
 struct AnalyzeMatchResult
 {
-    // ×Ü³¡´Î
+    // æ€»åœºæ¬¡
     int total_played;
 
-    // Ê¤³¡
+    // èƒœåœº
     int total_win;
 
-    // Æ½¾Ö
+    // å¹³å±€
     int total_draw;
 
-    // °Ü³¡
+    // è´¥åœº
     int total_lose;
 
-    // ×Ü½øÇò
+    // æ€»è¿›çƒ
     int total_goal;
 
-    // ×Ü¶ªÇò
+    // æ€»ä¸¢çƒ
     int total_against;
 
-    // ÓĞ½øÇòµÄ±ÈÈüÊı
+    // æœ‰è¿›çƒçš„æ¯”èµ›æ•°
     int match_count_with_goals;
 
-    // Ã»½øÇòµÄ±ÈÈüÊı
+    // æ²¡è¿›çƒçš„æ¯”èµ›æ•°
     int match_count_with_no_goals;
 
-    // ÓĞ¶ªÇòµÄ±ÈÈüÊı
+    // æœ‰ä¸¢çƒçš„æ¯”èµ›æ•°
     int match_count_with_goal_againsted;
 
-    // ÎŞ¶ªÇò£¨Áã·â£©µÄ±ÈÈüÊı
+    // æ— ä¸¢çƒï¼ˆé›¶å°ï¼‰çš„æ¯”èµ›æ•°
     int match_count_with_no_goal_againsted;
 
-    // µ¥³¡×î¶à½øÇò
+    // å•åœºæœ€å¤šè¿›çƒ
     int max_goal_at_one_match;
     std::vector<std::shared_ptr<Match>> max_goal_at_one_match_vec;
 
-    // µ¥³¡×î¶à¶ªÇò
+    // å•åœºæœ€å¤šä¸¢çƒ
     int max_against_goal_at_one_match;
     std::vector<std::shared_ptr<Match>> max_against_goal_at_one_match_vec;
 
-    // µ¥³¡×î¶à¾»Ê¤Çò
+    // å•åœºæœ€å¤šå‡€èƒœçƒ
     int max_goal_difference_at_one_match;
     std::vector<std::shared_ptr<Match>> max_goal_difference_at_one_match_vec;
 
-    // µ¥³¡×îÉÙ¾»Ê¤Çò£¨×î´ó±È·Ö²îÂä°Ü£©
+    // å•åœºæœ€å°‘å‡€èƒœçƒï¼ˆæœ€å¤§æ¯”åˆ†å·®è½è´¥ï¼‰
     int min_goal_difference_at_one_match;
     std::vector<std::shared_ptr<Match>> min_goal_difference_at_one_match_vec;
 
@@ -100,7 +100,7 @@ struct AnalyzeMatchResult
 
 struct AnalyzePlayerData
 {
-    // ½øÇòÊı£¨
+    // è¿›çƒæ•°ï¼ˆ
     int total_goal_for_lfc;
     int total_assist_for_lfc;
     int total_goal_against_lfc;
@@ -198,10 +198,10 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
             ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
             ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
 
-            // Í³¼Æ³¡´Î
+            // ç»Ÿè®¡åœºæ¬¡
             ++result.total_played;
             
-            // Í³¼ÆÊ¤Æ½¸º
+            // ç»Ÿè®¡èƒœå¹³è´Ÿ
             auto match_result = match->GetResult();
             if (match_result == EMatchResult::Win) {
                 ++result.total_win;
@@ -217,7 +217,7 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
             auto against_goal_cnt = match->opponent_goals.size();
             auto goal_difference = (int)goal_cnt - (int)against_goal_cnt;
 
-            // Í³¼Æ½øÇò³¡´Î¡¢Áã·â³¡´Î
+            // ç»Ÿè®¡è¿›çƒåœºæ¬¡ã€é›¶å°åœºæ¬¡
             if (goal_cnt > 0) {
                 ++result.match_count_with_goals;
             }
@@ -232,7 +232,7 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
                 ++result.match_count_with_no_goal_againsted;
             }
 
-            // Í³¼Æµ¥³¡×î¶à½øÇò
+            // ç»Ÿè®¡å•åœºæœ€å¤šè¿›çƒ
             if (goal_cnt == result.max_goal_at_one_match) {
                 result.max_goal_at_one_match_vec.push_back(match);
             }
@@ -243,7 +243,7 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
                 result.max_goal_at_one_match_vec.push_back(match);
             }
 
-            // Í³¼Æµ¥³¡×î¶à¶ªÇò
+            // ç»Ÿè®¡å•åœºæœ€å¤šä¸¢çƒ
             if (against_goal_cnt == result.max_against_goal_at_one_match) {
                 result.max_against_goal_at_one_match_vec.push_back(match);
             }
@@ -254,7 +254,7 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
                 result.max_against_goal_at_one_match_vec.push_back(match);
             }
 
-            // Í³¼Æµ¥³¡×î´ó±È·Ö²îÊ¤Àû
+            // ç»Ÿè®¡å•åœºæœ€å¤§æ¯”åˆ†å·®èƒœåˆ©
             if (goal_difference == result.max_goal_difference_at_one_match) {
                 result.max_goal_difference_at_one_match_vec.push_back(match);
             }
@@ -265,7 +265,7 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
                 result.max_goal_difference_at_one_match_vec.push_back(match);
             }
 
-            // Í³¼Æµ¥³¡×î´ó±È·Ö²îÊ§Àû
+            // ç»Ÿè®¡å•åœºæœ€å¤§æ¯”åˆ†å·®å¤±åˆ©
             if (goal_difference == result.min_goal_difference_at_one_match) {
                 result.min_goal_difference_at_one_match_vec.push_back(match);
             }
@@ -276,11 +276,11 @@ static void ShowAnalyzeMatchWindow(bool* p_open)
                 result.min_goal_difference_at_one_match_vec.push_back(match);
             }
 
-            // Í³¼Æ×Ü½øÇòÊı¡¢×Ü¶ªÇòÊı
+            // ç»Ÿè®¡æ€»è¿›çƒæ•°ã€æ€»ä¸¢çƒæ•°
             result.total_goal += goal_cnt;
             result.total_against += against_goal_cnt;
 
-            // Í³¼ÆÇòÔ±µÄ½øÇòºÍÖú¹¥´ÎÊı
+            // ç»Ÿè®¡çƒå‘˜çš„è¿›çƒå’ŒåŠ©æ”»æ¬¡æ•°
             for (auto goal : match->lfc_goals) {
                 if (goal->score_player) {
                     ++player_datas[goal->score_player].total_goal_for_lfc;
