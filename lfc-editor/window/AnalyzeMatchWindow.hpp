@@ -2,402 +2,476 @@
 #include "imgui.h"
 #include "data\database.hpp"
 #include "utility.hpp"
+#include "Analyze.hpp"
 #include "data\Player.hpp"
 #include "TopNTable.hpp"
 
-// æ¯”èµ›è¿‡æ»¤å™¨
-struct AnalyzeMatchFilter
-{
-    // æŒ‡å®šå¯¹æ‰‹
-    std::shared_ptr<FootballClub> oppenent_team;
-
-    // ä¸»å®¢åœº
-    EMatchSide side;
-
-    // æŒ‡å®šèµ›äº‹ï¼ˆç»„åˆï¼‰
-    long event_flag;
-
-    std::shared_ptr<DateRange> date_range;
-
-    // æŒ‡å®šæ—¶é—´æ®µ
-    Date min_date;
-    Date max_date;
-
-    AnalyzeMatchFilter()
-    {
-        event_flag = 0;
-        side = EMatchSide::Any;
-    }
-};
-
-// æ¯”èµ›åˆ†æçš„æ•°æ®
+// ±ÈÈü·ÖÎöµÄÊı¾İ
 struct AnalyzeMatchResult
 {
-    // æ€»åœºæ¬¡
-    int total_played;
+	// ×Ü³¡´Î
+	int total_played;
 
-    // èƒœåœº
-    int total_win;
+	// Ê¤³¡
+	int total_win;
 
-    // å¹³å±€
-    int total_draw;
+	// Æ½¾Ö
+	int total_draw;
 
-    // è´¥åœº
-    int total_lose;
+	// °Ü³¡
+	int total_lose;
 
-    // æ€»è¿›çƒ
-    int total_goal;
+	// ×Ü½øÇò
+	int total_goal;
 
-    // æ€»ä¸¢çƒ
-    int total_against;
+	// ×Ü¶ªÇò
+	int total_against;
 
-    // æœ‰è¿›çƒçš„æ¯”èµ›æ•°
-    int match_count_with_goals;
+	// ÓĞ½øÇòµÄ±ÈÈüÊı
+	int match_count_with_goals;
 
-    // æ²¡è¿›çƒçš„æ¯”èµ›æ•°
-    int match_count_with_no_goals;
+	// Ã»½øÇòµÄ±ÈÈüÊı
+	int match_count_with_no_goals;
 
-    // æœ‰ä¸¢çƒçš„æ¯”èµ›æ•°
-    int match_count_with_goal_againsted;
+	// ÓĞ¶ªÇòµÄ±ÈÈüÊı
+	int match_count_with_goal_againsted;
 
-    // æ— ä¸¢çƒï¼ˆé›¶å°ï¼‰çš„æ¯”èµ›æ•°
-    int match_count_with_no_goal_againsted;
+	// ÎŞ¶ªÇò£¨Áã·â£©µÄ±ÈÈüÊı
+	int match_count_with_no_goal_againsted;
 
-    // å•åœºæœ€å¤šè¿›çƒ
-    int max_goal_at_one_match;
-    std::vector<std::shared_ptr<Match>> max_goal_at_one_match_vec;
+	// µ¥³¡×î¶à½øÇò
+	int max_goal_at_one_match;
+	std::vector<std::shared_ptr<Match>> max_goal_at_one_match_vec;
 
-    // å•åœºæœ€å¤šä¸¢çƒ
-    int max_against_goal_at_one_match;
-    std::vector<std::shared_ptr<Match>> max_against_goal_at_one_match_vec;
+	// µ¥³¡×î¶à¶ªÇò
+	int max_against_goal_at_one_match;
+	std::vector<std::shared_ptr<Match>> max_against_goal_at_one_match_vec;
 
-    // å•åœºæœ€å¤šå‡€èƒœçƒ
-    int max_goal_difference_at_one_match;
-    std::vector<std::shared_ptr<Match>> max_goal_difference_at_one_match_vec;
+	// µ¥³¡×î¶à¾»Ê¤Çò
+	int max_goal_difference_at_one_match;
+	std::vector<std::shared_ptr<Match>> max_goal_difference_at_one_match_vec;
 
-    // å•åœºæœ€å°‘å‡€èƒœçƒï¼ˆæœ€å¤§æ¯”åˆ†å·®è½è´¥ï¼‰
-    int min_goal_difference_at_one_match;
-    std::vector<std::shared_ptr<Match>> min_goal_difference_at_one_match_vec;
+	// µ¥³¡×îÉÙ¾»Ê¤Çò£¨×î´ó±È·Ö²îÂä°Ü£©
+	int min_goal_difference_at_one_match;
+	std::vector<std::shared_ptr<Match>> min_goal_difference_at_one_match_vec;
 
-    AnalyzeMatchResult()
-    {
-        total_played = 0;
-        total_win = 0;
-        total_draw = 0;
-        total_lose = 0;
-        total_goal = 0;
-        total_against = 0;
-        match_count_with_goals = 0;
-        match_count_with_no_goals = 0;
-        match_count_with_goal_againsted = 0;
-        match_count_with_no_goal_againsted = 0;
-        max_goal_at_one_match = 0;
-        max_against_goal_at_one_match = 0;
-        max_goal_difference_at_one_match = 0;
-        min_goal_difference_at_one_match = 0;
-    }
+	AnalyzeMatchResult()
+	{
+		total_played = 0;
+		total_win = 0;
+		total_draw = 0;
+		total_lose = 0;
+		total_goal = 0;
+		total_against = 0;
+		match_count_with_goals = 0;
+		match_count_with_no_goals = 0;
+		match_count_with_goal_againsted = 0;
+		match_count_with_no_goal_againsted = 0;
+		max_goal_at_one_match = 0;
+		max_against_goal_at_one_match = 0;
+		max_goal_difference_at_one_match = 0;
+		min_goal_difference_at_one_match = 0;
+	}
 };
 
-struct AnalyzePlayerData
+struct MatchRecord
 {
-    // è¿›çƒæ•°ï¼ˆ
-    int total_goal_for_lfc;
-    int total_assist_for_lfc;
-    int total_goal_against_lfc;
-    int total_assist_against_lfc;
+	std::vector<std::shared_ptr<Match>> current;
+	size_t max_count;
+	std::vector<std::vector<std::shared_ptr<Match>>> max;
 
-    AnalyzePlayerData()
-    {
-        memset(this, 0, sizeof(AnalyzePlayerData));
-    }
+	MatchRecord()
+	{
+		max_count = 0;
+	}
+
+	void AddMatch(std::shared_ptr<Match> match)
+	{
+		current.push_back(match);
+	}
+
+	void Interrupt()
+	{
+		if (current.size() > 0) {
+			if (current.size() > max_count) {
+				max.clear();
+				max.push_back(current);
+
+				max_count = current.size();
+			}
+			else if (current.size() == max_count) {
+				max.push_back(current);
+			}
+
+			current.clear();
+		}
+	}
+};
+
+struct MatchRecordResult
+{
+	// Á¬Ê¤
+	MatchRecord keep_win;
+
+	// Á¬Æ½
+	MatchRecord keep_draw;
+
+	// Á¬°Ü
+	MatchRecord keep_lose;
+
+	// ²»°Ü
+	MatchRecord keep_no_lose;
+
+	// ²»Ê¤
+	MatchRecord keep_no_win;
 };
 
 static void ShowAnalyzeMatchWindow(bool* p_open)
 {
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Analyze Match", p_open)) {
-        // left
-        ImGui::BeginChild("analyze match filter", ImVec2(200, 0), true);
+	ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
+	if (ImGui::Begin("Analyze Match", p_open)) {
+		// left
+		ImGui::BeginChild("analyze match filter", ImVec2(200, 0), true);
 
-        char label[128];
+		char label[128];
 
-        static AnalyzeMatchFilter s_filter;
+		static AnalyzeMatchFilter s_filter;
 
-        ImGui::ClubCombo(utf8("oppenent team"), &s_filter.oppenent_team);
-        ImGui::ESideEdit(utf8("side"), &s_filter.side);
+		ImGui::ClubCombo(utf8("oppenent team"), &s_filter.oppenent_team);
+		ImGui::ESideEdit(utf8("side"), &s_filter.side);
 
-        static std::shared_ptr<DateRange> s_tmp_date_range;
-        ImGui::DateRangeCombo(utf8("date"), &s_tmp_date_range);
-        if (s_tmp_date_range != s_filter.date_range) {
-            s_filter.date_range = s_tmp_date_range;
-            if (s_filter.date_range) {
-                s_filter.min_date = s_filter.date_range->begin;
-                s_filter.max_date = s_filter.date_range->end;
-            }
-        }
+		static std::shared_ptr<DateRange> s_tmp_date_range;
+		ImGui::DateRangeCombo(utf8("date"), &s_tmp_date_range);
+		if (s_tmp_date_range != s_filter.date_range) {
+			s_filter.date_range = s_tmp_date_range;
+			if (s_filter.date_range) {
+				s_filter.min_date = s_filter.date_range->begin;
+				s_filter.max_date = s_filter.date_range->end;
+			}
+		}
 
-        ImGui::DateEdit(utf8("min time"), &s_filter.min_date);
-        ImGui::DateEdit(utf8("max time"), &s_filter.max_date);
+		ImGui::DateEdit(utf8("min time"), &s_filter.min_date);
+		ImGui::DateEdit(utf8("max time"), &s_filter.max_date);
 
-        for (int i = (int)EEventType::FriendlyMatch; i < (int)EEventType::EVENT_MAX; ++i) {
-            auto flag = 1 << i;
-            auto is_checked = (s_filter.event_flag & flag) != 0;
-            if (ImGui::Checkbox(utility::ToString((EEventType)i), &is_checked)) {
-                if (is_checked) {
-                    s_filter.event_flag |= flag;
-                }
-                else {
-                    s_filter.event_flag &= ~flag;
-                }
-            }
-        }
+		for (int i = (int)EEventType::FriendlyMatch; i < (int)EEventType::EVENT_MAX; ++i) {
+			auto flag = 1 << i;
+			auto is_checked = (s_filter.event_flag & flag) != 0;
+			if (ImGui::Checkbox(utility::ToString((EEventType)i), &is_checked)) {
+				if (is_checked) {
+					s_filter.event_flag |= flag;
+				}
+				else {
+					s_filter.event_flag &= ~flag;
+				}
+			}
+		}
 
-        ImGui::EndChild();
-        ImGui::SameLine();
+		ImGui::EndChild();
+		ImGui::SameLine();
 
-        ImGui::BeginChild("match pane", ImVec2(300, 0), true);
-        ImGui::ColumnHeaders(3, 0.15, 0.55, 0.3);
+		ImGui::BeginChild("match pane", ImVec2(300, 0), true);
+		ImGui::ColumnHeaders(3, 0.15, 0.55, 0.3);
 
-        // header
-        ImGui::Separator();
-        ImGui::Text("id"); ImGui::NextColumn();
-        ImGui::Text("match"); ImGui::NextColumn();
-        ImGui::Text("time"); ImGui::NextColumn();
-        ImGui::Separator();
+		// header
+		ImGui::Separator();
+		ImGui::Text("id"); ImGui::NextColumn();
+		ImGui::Text("match"); ImGui::NextColumn();
+		ImGui::Text("time"); ImGui::NextColumn();
+		ImGui::Separator();
 
-        std::vector<std::shared_ptr<Match>> all_matchs;
-        for (auto evt : global_db.events) {
-            auto evt_flag = 1 << (int)evt->event_type;
-            if ((s_filter.event_flag & evt_flag) != 0) {
-                evt->FillMatchs(all_matchs);
-            }
-        }
+		std::vector<std::shared_ptr<Match>> all_matchs;
+		for (auto evt : global_db.events) {
+			auto evt_flag = 1 << (int)evt->event_type;
+			if ((s_filter.event_flag & evt_flag) != 0) {
+				evt->FillMatchs(all_matchs);
+			}
+		}
 
-        global_db.SortMatchs(all_matchs);
+		global_db.SortMatchs(all_matchs);
 
-        AnalyzeMatchResult result;
-        std::map<std::shared_ptr<Player>, AnalyzePlayerData> player_datas;
-        for (auto match : all_matchs) {
-            if (s_filter.side != EMatchSide::Any && s_filter.side != match->side) {
-                continue;
-            }
-            if (s_filter.oppenent_team && s_filter.oppenent_team != match->opponent_team) {
-                continue;
-            }
-            if (s_filter.min_date.IsValid() && match->time < s_filter.min_date) {
-                continue;
-            }
-            if (s_filter.max_date.IsValid() && match->time > s_filter.max_date) {
-                continue;
-            }
+		AnalyzeMatchResult result;
+		MatchRecordResult record;
+		for (auto match : all_matchs) {
+			if (s_filter.side != EMatchSide::Any && s_filter.side != match->side) {
+				continue;
+			}
+			if (s_filter.oppenent_team && s_filter.oppenent_team != match->opponent_team) {
+				continue;
+			}
+			if (s_filter.min_date.IsValid() && match->time < s_filter.min_date) {
+				continue;
+			}
+			if (s_filter.max_date.IsValid() && match->time > s_filter.max_date) {
+				continue;
+			}
 
-            sprintf(label, "%04d", match->id);
-            ImGui::Text(label);
-            ImGui::NextColumn();
+			sprintf(label, "%04d", match->id);
+			ImGui::Text(label);
+			ImGui::NextColumn();
 
-            ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
-            ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
+			ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
+			ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
 
-            // ç»Ÿè®¡åœºæ¬¡
-            ++result.total_played;
-            
-            // ç»Ÿè®¡èƒœå¹³è´Ÿ
-            auto match_result = match->GetResult();
-            if (match_result == EMatchResult::Win) {
-                ++result.total_win;
-            }
-            else if (match_result == EMatchResult::Draw) {
-                ++result.total_draw;
-            }
-            else if (match_result == EMatchResult::Lose) {
-                ++result.total_lose;
-            }
+			// Í³¼Æ³¡´Î
+			++result.total_played;
 
-            auto goal_cnt = match->lfc_goals.size();
-            auto against_goal_cnt = match->opponent_goals.size();
-            auto goal_difference = (int)goal_cnt - (int)against_goal_cnt;
+			// Í³¼ÆÊ¤Æ½¸º
+			auto match_result = match->GetResult();
+			if (match_result == EMatchResult::Win) {
+				++result.total_win;
 
-            // ç»Ÿè®¡è¿›çƒåœºæ¬¡ã€é›¶å°åœºæ¬¡
-            if (goal_cnt > 0) {
-                ++result.match_count_with_goals;
-            }
-            else {
-                ++result.match_count_with_no_goals;
-            }
+				record.keep_win.AddMatch(match);
+				record.keep_draw.Interrupt();
+				record.keep_lose.Interrupt();
+				record.keep_no_lose.AddMatch(match);
+				record.keep_no_win.Interrupt();
+			}
+			else if (match_result == EMatchResult::Draw) {
+				++result.total_draw;
 
-            if (against_goal_cnt > 0) {
-                ++result.match_count_with_goal_againsted;
-            }
-            else {
-                ++result.match_count_with_no_goal_againsted;
-            }
+				record.keep_win.Interrupt();
+				record.keep_draw.AddMatch(match);
+				record.keep_lose.Interrupt();
+				record.keep_no_lose.AddMatch(match);
+				record.keep_no_win.AddMatch(match);
+			}
+			else if (match_result == EMatchResult::Lose) {
+				++result.total_lose;
 
-            // ç»Ÿè®¡å•åœºæœ€å¤šè¿›çƒ
-            if (goal_cnt == result.max_goal_at_one_match) {
-                result.max_goal_at_one_match_vec.push_back(match);
-            }
-            else if (goal_cnt > result.max_goal_at_one_match) {
-                result.max_goal_at_one_match = goal_cnt;
+				record.keep_win.Interrupt();
+				record.keep_draw.Interrupt();
+				record.keep_lose.AddMatch(match);
+				record.keep_no_lose.Interrupt();
+				record.keep_no_win.AddMatch(match);
+			}
 
-                result.max_goal_at_one_match_vec.clear();
-                result.max_goal_at_one_match_vec.push_back(match);
-            }
+			auto goal_cnt = match->lfc_goals.size();
+			auto against_goal_cnt = match->opponent_goals.size();
+			auto goal_difference = (int)goal_cnt - (int)against_goal_cnt;
 
-            // ç»Ÿè®¡å•åœºæœ€å¤šä¸¢çƒ
-            if (against_goal_cnt == result.max_against_goal_at_one_match) {
-                result.max_against_goal_at_one_match_vec.push_back(match);
-            }
-            else if (against_goal_cnt > result.max_against_goal_at_one_match) {
-                result.max_against_goal_at_one_match = against_goal_cnt;
+			// Í³¼Æ½øÇò³¡´Î¡¢Áã·â³¡´Î
+			if (goal_cnt > 0) {
+				++result.match_count_with_goals;
+			}
+			else {
+				++result.match_count_with_no_goals;
+			}
 
-                result.max_against_goal_at_one_match_vec.clear();
-                result.max_against_goal_at_one_match_vec.push_back(match);
-            }
+			if (against_goal_cnt > 0) {
+				++result.match_count_with_goal_againsted;
+			}
+			else {
+				++result.match_count_with_no_goal_againsted;
+			}
 
-            // ç»Ÿè®¡å•åœºæœ€å¤§æ¯”åˆ†å·®èƒœåˆ©
-            if (goal_difference == result.max_goal_difference_at_one_match) {
-                result.max_goal_difference_at_one_match_vec.push_back(match);
-            }
-            else if (goal_difference > result.max_goal_difference_at_one_match) {
-                result.max_goal_difference_at_one_match = goal_difference;
+			// Í³¼Æµ¥³¡×î¶à½øÇò
+			if (goal_cnt == result.max_goal_at_one_match) {
+				result.max_goal_at_one_match_vec.push_back(match);
+			}
+			else if (goal_cnt > result.max_goal_at_one_match) {
+				result.max_goal_at_one_match = goal_cnt;
 
-                result.max_goal_difference_at_one_match_vec.clear();
-                result.max_goal_difference_at_one_match_vec.push_back(match);
-            }
+				result.max_goal_at_one_match_vec.clear();
+				result.max_goal_at_one_match_vec.push_back(match);
+			}
 
-            // ç»Ÿè®¡å•åœºæœ€å¤§æ¯”åˆ†å·®å¤±åˆ©
-            if (goal_difference == result.min_goal_difference_at_one_match) {
-                result.min_goal_difference_at_one_match_vec.push_back(match);
-            }
-            else if (goal_difference < result.min_goal_difference_at_one_match) {
-                result.min_goal_difference_at_one_match = goal_difference;
+			// Í³¼Æµ¥³¡×î¶à¶ªÇò
+			if (against_goal_cnt == result.max_against_goal_at_one_match) {
+				result.max_against_goal_at_one_match_vec.push_back(match);
+			}
+			else if (against_goal_cnt > result.max_against_goal_at_one_match) {
+				result.max_against_goal_at_one_match = against_goal_cnt;
 
-                result.min_goal_difference_at_one_match_vec.clear();
-                result.min_goal_difference_at_one_match_vec.push_back(match);
-            }
+				result.max_against_goal_at_one_match_vec.clear();
+				result.max_against_goal_at_one_match_vec.push_back(match);
+			}
 
-            // ç»Ÿè®¡æ€»è¿›çƒæ•°ã€æ€»ä¸¢çƒæ•°
-            result.total_goal += goal_cnt;
-            result.total_against += against_goal_cnt;
+			// Í³¼Æµ¥³¡×î´ó±È·Ö²îÊ¤Àû
+			if (goal_difference == result.max_goal_difference_at_one_match) {
+				result.max_goal_difference_at_one_match_vec.push_back(match);
+			}
+			else if (goal_difference > result.max_goal_difference_at_one_match) {
+				result.max_goal_difference_at_one_match = goal_difference;
 
-            // ç»Ÿè®¡çƒå‘˜çš„è¿›çƒå’ŒåŠ©æ”»æ¬¡æ•°
-            for (auto goal : match->lfc_goals) {
-                if (goal->score_player) {
-                    ++player_datas[goal->score_player].total_goal_for_lfc;
-                }
-                if (goal->assist_player) {
-                    ++player_datas[goal->assist_player].total_assist_for_lfc;
-                }
-            }
+				result.max_goal_difference_at_one_match_vec.clear();
+				result.max_goal_difference_at_one_match_vec.push_back(match);
+			}
 
-            for (auto goal : match->opponent_goals) {
-                if (goal->score_player) {
-                    ++player_datas[goal->score_player].total_goal_against_lfc;
-                }
-                if (goal->assist_player) {
-                    ++player_datas[goal->assist_player].total_assist_against_lfc;
-                }
-            }
-        }
-        ImGui::Columns(1);
-        ImGui::EndChild();
-        ImGui::SameLine();
+			// Í³¼Æµ¥³¡×î´ó±È·Ö²îÊ§Àû
+			if (goal_difference == result.min_goal_difference_at_one_match) {
+				result.min_goal_difference_at_one_match_vec.push_back(match);
+			}
+			else if (goal_difference < result.min_goal_difference_at_one_match) {
+				result.min_goal_difference_at_one_match = goal_difference;
 
-        // right
-        ImGui::BeginChild("result view", ImVec2(600, 0));
+				result.min_goal_difference_at_one_match_vec.clear();
+				result.min_goal_difference_at_one_match_vec.push_back(match);
+			}
 
-        ImGui::Columns(8);
-        // header
-        ImGui::Separator();
-        ImGui::Text(utf8("pl table played")); ImGui::NextColumn();
-        ImGui::Text(utf8("pl table won/drawn/lost")); ImGui::NextColumn();
-        ImGui::Text(utf8("pl table goals for/against")); ImGui::NextColumn();
-        ImGui::Text(utf8("pl table win rate")); ImGui::NextColumn();
-        ImGui::Text(utf8("pl table goal per match")); ImGui::NextColumn();
-        ImGui::Text(utf8("pl table goal against per match")); ImGui::NextColumn();
-        ImGui::Text(utf8("match with goal count")); ImGui::NextColumn();
-        ImGui::Text(utf8("match with no goal against count")); ImGui::NextColumn();
-        ImGui::Separator();
+			// Í³¼Æ×Ü½øÇòÊı¡¢×Ü¶ªÇòÊı
+			result.total_goal += goal_cnt;
+			result.total_against += against_goal_cnt;
+		}
 
-        ImGui::Text("%d", result.total_played); ImGui::NextColumn();
-        ImGui::Text("%d/%d/%d", result.total_win, result.total_draw, result.total_lose); ImGui::NextColumn();
-        ImGui::Text("%d/%d", result.total_goal, result.total_against); ImGui::NextColumn();
-        ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_win / result.total_played); ImGui::NextColumn();
-        ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_goal / result.total_played); ImGui::NextColumn();
-        ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_against / result.total_played); ImGui::NextColumn();
-        ImGui::Text("%d (%d%%)", result.match_count_with_goals, (int)(100.f * result.match_count_with_goals / result.total_played)); ImGui::NextColumn();
-        ImGui::Text("%d (%d%%)", result.match_count_with_no_goal_againsted, (int)(100.f * result.match_count_with_no_goal_againsted / result.total_played)); ImGui::NextColumn();
-        ImGui::Separator();
-        ImGui::Columns(1);
+		record.keep_win.Interrupt();
+		record.keep_draw.Interrupt();
+		record.keep_lose.Interrupt();
+		record.keep_no_lose.Interrupt();
+		record.keep_no_win.Interrupt();
 
-        sprintf(label, utf8("max goal at one match"), result.max_goal_at_one_match);
-        if (ImGui::TreeNode(label)) {
-            for (auto match : result.max_goal_at_one_match_vec) {
-                ImGui::Text(utility::ToString(match));
-            }
-            ImGui::TreePop();
-        }
+		ImGui::Columns(1);
+		ImGui::EndChild();
+		ImGui::SameLine();
 
-        sprintf(label, utf8("max goal against at one match"), result.max_against_goal_at_one_match);
-        if (ImGui::TreeNode(label)) {
-            for (auto match : result.max_against_goal_at_one_match_vec) {
-                ImGui::Text(utility::ToString(match));
-            }
-            ImGui::TreePop();
-        }
+		// right
+		ImGui::BeginChild("result view", ImVec2(600, 0));
 
-        sprintf(label, utf8("max goal difference at one match"), result.max_goal_difference_at_one_match);
-        if (ImGui::TreeNode(label)) {
-            for (auto match : result.max_goal_difference_at_one_match_vec) {
-                ImGui::Text(utility::ToString(match));
-            }
-            ImGui::TreePop();
-        }
+		ImGui::Columns(8);
+		// header
+		ImGui::Separator();
+		ImGui::Text(utf8("pl table played")); ImGui::NextColumn();
+		ImGui::Text(utf8("pl table won/drawn/lost")); ImGui::NextColumn();
+		ImGui::Text(utf8("pl table goals for/against")); ImGui::NextColumn();
+		ImGui::Text(utf8("pl table win rate")); ImGui::NextColumn();
+		ImGui::Text(utf8("pl table goal per match")); ImGui::NextColumn();
+		ImGui::Text(utf8("pl table goal against per match")); ImGui::NextColumn();
+		ImGui::Text(utf8("match with goal count")); ImGui::NextColumn();
+		ImGui::Text(utf8("match with no goal against count")); ImGui::NextColumn();
+		ImGui::Separator();
 
-        sprintf(label, utf8("min goal difference at one match"), result.min_goal_difference_at_one_match);
-        if (ImGui::TreeNode(label)) {
-            for (auto match : result.min_goal_difference_at_one_match_vec) {
-                ImGui::Text(utility::ToString(match));
-            }
-            ImGui::TreePop();
-        }
+		ImGui::Text("%d", result.total_played); ImGui::NextColumn();
+		ImGui::Text("%d/%d/%d", result.total_win, result.total_draw, result.total_lose); ImGui::NextColumn();
+		ImGui::Text("%d/%d", result.total_goal, result.total_against); ImGui::NextColumn();
+		ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_win / result.total_played); ImGui::NextColumn();
+		ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_goal / result.total_played); ImGui::NextColumn();
+		ImGui::Text("%.2f", result.total_played == 0.f ? 0.f : (float)result.total_against / result.total_played); ImGui::NextColumn();
+		ImGui::Text("%d (%d%%)", result.match_count_with_goals, (int)(100.f * result.match_count_with_goals / result.total_played)); ImGui::NextColumn();
+		ImGui::Text("%d (%d%%)", result.match_count_with_no_goal_againsted, (int)(100.f * result.match_count_with_no_goal_againsted / result.total_played)); ImGui::NextColumn();
+		ImGui::Separator();
+		ImGui::Columns(1);
 
-        TopNTable<Player> top_score_player_for_lfc(10);
-        TopNTable<Player> top_assist_player_for_lfc(10);
-        TopNTable<Player> top_create_goal_player_for_lfc(10);
-        TopNTable<Player> top_score_player_against_lfc(5);
-        TopNTable<Player> top_assist_player_against_lfc(5);
-        TopNTable<Player> top_create_goal_player_against_lfc(5);
+		sprintf(label, utf8("max goal at one match"), result.max_goal_at_one_match);
+		if (ImGui::TreeNode(label)) {
+			for (auto match : result.max_goal_at_one_match_vec) {
+				ImGui::Text(utility::ToString(match));
+			}
+			ImGui::TreePop();
+		}
 
-        for (auto kvp : player_datas) {
-            top_score_player_for_lfc.Push(kvp.first, kvp.second.total_goal_for_lfc);
-            top_assist_player_for_lfc.Push(kvp.first, kvp.second.total_assist_for_lfc);
-            top_create_goal_player_for_lfc.Push(kvp.first, kvp.second.total_goal_for_lfc + kvp.second.total_assist_for_lfc);
+		sprintf(label, utf8("max goal against at one match"), result.max_against_goal_at_one_match);
+		if (ImGui::TreeNode(label)) {
+			for (auto match : result.max_against_goal_at_one_match_vec) {
+				ImGui::Text(utility::ToString(match));
+			}
+			ImGui::TreePop();
+		}
 
-            top_score_player_against_lfc.Push(kvp.first, kvp.second.total_goal_against_lfc);
-            top_assist_player_against_lfc.Push(kvp.first, kvp.second.total_assist_against_lfc);
-            top_create_goal_player_against_lfc.Push(kvp.first, kvp.second.total_goal_against_lfc + kvp.second.total_assist_against_lfc);
-        }
+		sprintf(label, utf8("max goal difference at one match"), result.max_goal_difference_at_one_match);
+		if (ImGui::TreeNode(label)) {
+			for (auto match : result.max_goal_difference_at_one_match_vec) {
+				ImGui::Text(utility::ToString(match));
+			}
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("goal table"), &top_score_player_for_lfc, ImVec2(200, 250));
-        ImGui::SameLine();
+		sprintf(label, utf8("min goal difference at one match"), result.min_goal_difference_at_one_match);
+		if (ImGui::TreeNode(label)) {
+			for (auto match : result.min_goal_difference_at_one_match_vec) {
+				ImGui::Text(utility::ToString(match));
+			}
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("assist table"), &top_assist_player_for_lfc, ImVec2(200, 250));
-        ImGui::SameLine();
+		sprintf(label, "keep win (%d)", record.keep_win.max_count);
+		if (ImGui::TreeNode(label)) {
+			ImGui::PushID("keep win");
+			for (auto i = 0; i < record.keep_win.max.size(); ++i) {
+				sprintf(label, "%d", i);
+				if (ImGui::TreeNode(label)) {
+					ImGui::Columns(2);
+					for (auto match : record.keep_win.max[i]) {
+						ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
+						ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
+					}
+					ImGui::Columns(1);
+					ImGui::TreePop();
+				}
+			}
+			ImGui::PopID();
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("create goal table"), &top_create_goal_player_for_lfc, ImVec2(200, 250));
+		sprintf(label, "keep draw (%d)", record.keep_draw.max_count);
+		if (ImGui::TreeNode(label)) {
+			ImGui::PushID("keep draw");
+			for (auto i = 0; i < record.keep_draw.max.size(); ++i) {
+				sprintf(label, "%d", i);
+				if (ImGui::TreeNode(label)) {
+					ImGui::Columns(2);
+					for (auto match : record.keep_draw.max[i]) {
+						ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
+						ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
+					}
+					ImGui::Columns(1);
+					ImGui::TreePop();
+				}
+			}
+			ImGui::PopID();
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("goal table"), &top_score_player_against_lfc);
-        ImGui::SameLine();
+		sprintf(label, "keep lose (%d)", record.keep_lose.max_count);
+		if (ImGui::TreeNode(label)) {
+			ImGui::PushID("keep lose");
+			for (auto i = 0; i < record.keep_lose.max.size(); ++i) {
+				sprintf(label, "%d", i);
+				if (ImGui::TreeNode(label)) {
+					ImGui::Columns(2);
+					for (auto match : record.keep_lose.max[i]) {
+						ImGui::Text(utility::ToString(match)); ImGui::NextColumn();
+						ImGui::Text(utility::ToString(match->time)); ImGui::NextColumn();
+					}
+					ImGui::Columns(1);
+					ImGui::TreePop();
+				}
+			}
+			ImGui::PopID();
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("assist table"), &top_assist_player_against_lfc);
-        ImGui::SameLine();
+		sprintf(label, "keep no lose (%d)", record.keep_no_lose.max_count);
+		if (ImGui::TreeNode(label)) {
+			ImGui::PushID("keep no lose");
+			for (auto i = 0; i < record.keep_no_lose.max.size(); ++i) {
+				sprintf(label, "%d", i);
+				if (ImGui::TreeNode(label)) {
+					for (auto match : record.keep_no_lose.max[i]) {
+						ImGui::Text(utility::ToString(match));
+					}
+					ImGui::TreePop();
+				}
+			}
+			ImGui::PopID();
+			ImGui::TreePop();
+		}
 
-        ImGui::TopNPlayerTable(utf8("create goal table"), &top_create_goal_player_against_lfc);
+		sprintf(label, "keep no win (%d)", record.keep_no_win.max_count);
+		if (ImGui::TreeNode(label)) {
+			ImGui::PushID("keep no win");
+			for (auto i = 0; i < record.keep_no_win.max.size(); ++i) {
+				sprintf(label, "%d", i);
+				if (ImGui::TreeNode(label)) {
+					for (auto match : record.keep_no_win.max[i]) {
+						ImGui::Text(utility::ToString(match));
+					}
+					ImGui::TreePop();
+				}
+			}
+			ImGui::PopID();
+			ImGui::TreePop();
+		}
 
-        ImGui::Separator();
-
-        ImGui::EndChild();
-    }
-    ImGui::End();
+		ImGui::EndChild();
+	}
+	ImGui::End();
 }

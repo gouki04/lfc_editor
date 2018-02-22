@@ -21,6 +21,9 @@
     <Filter Include="window">
       <UniqueIdentifier>{03fc6088-2f81-4722-b265-d749673ef8d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data\analyze">
+      <UniqueIdentifier>{e2afd999-1454-4182-8faf-80230f33c608}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entry.hpp">
@@ -101,9 +104,6 @@
     <ClInclude Include="data\FriendlyMatch.hpp">
       <Filter>data\event</Filter>
     </ClInclude>
-    <ClInclude Include="window\AnalyzeMatchWindow.hpp">
-      <Filter>window</Filter>
-    </ClInclude>
     <ClInclude Include="window\MatchListWindow.hpp">
       <Filter>window</Filter>
     </ClInclude>
@@ -130,6 +130,15 @@
     </ClInclude>
     <ClInclude Include="window\AnalyzePrimierLeagueWindow.hpp">
       <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\AnalyzePlayerWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="window\AnalyzeMatchWindow.hpp">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="Analyze.hpp">
+      <Filter>data\analyze</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
