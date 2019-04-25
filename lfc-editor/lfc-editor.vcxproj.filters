@@ -140,6 +140,9 @@
     <ClInclude Include="Analyze.hpp">
       <Filter>data\analyze</Filter>
     </ClInclude>
+    <ClInclude Include="..\imgui\imgui_user.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,6 +172,9 @@
     </None>
     <None Include="localization.json">
       <Filter>resources</Filter>
+    </None>
+    <None Include="..\imgui\imgui_user.inl">
+      <Filter>imgui</Filter>
     </None>
   </ItemGroup>
 </Project>

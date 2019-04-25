@@ -1061,7 +1061,6 @@ ImFontAtlas::ImFontAtlas()
     TexPixelsAlpha8 = NULL;
     TexPixelsRGBA32 = NULL;
     TexWidth = TexHeight = TexDesiredWidth = 0;
-    TexGlyphPadding = 1;
     TexUvWhitePixel = ImVec2(0, 0);
 }
 
@@ -1172,8 +1171,8 @@ ImFont* ImFontAtlas::AddFont(const ImFontConfig* font_cfg)
 
     ConfigData.push_back(*font_cfg);
     ImFontConfig& new_font_cfg = ConfigData.back();
-    if (!new_font_cfg.DstFont)
-        new_font_cfg.DstFont = Fonts.back();
+	if (!new_font_cfg.DstFont)
+	    new_font_cfg.DstFont = Fonts.back();
     if (!new_font_cfg.FontDataOwnedByAtlas)
     {
         new_font_cfg.FontData = ImGui::MemAlloc(new_font_cfg.FontDataSize);
@@ -1315,13 +1314,13 @@ bool    ImFontAtlas::Build()
         }
     }
 
-    // Start packing. We need a known width for the skyline algorithm. Using a cheap heuristic here to decide of width. User can override TexDesiredWidth and TexGlyphPadding if they wish.
+    // Start packing. We need a known width for the skyline algorithm. Using a cheap heuristic here to decide of width. User can override TexDesiredWidth if they wish.
     // After packing is done, width shouldn't matter much, but some API/GPU have texture size limitations and increasing width can decrease height.
     TexWidth = (TexDesiredWidth > 0) ? TexDesiredWidth : (total_glyph_count > 4000) ? 4096 : (total_glyph_count > 2000) ? 2048 : (total_glyph_count > 1000) ? 1024 : 512;
     TexHeight = 0;
     const int max_tex_height = 1024*32;
     stbtt_pack_context spc;
-    stbtt_PackBegin(&spc, NULL, TexWidth, max_tex_height, 0, TexGlyphPadding, NULL);
+    stbtt_PackBegin(&spc, NULL, TexWidth, max_tex_height, 0, 1, NULL);
 
     // Pack our extra data rectangles first, so it will be on the upper-left corner of our texture (UV will have small values).
     ImVector<stbrp_rect> extra_rects;
@@ -1879,7 +1878,6 @@ const char* ImFont::CalcWordWrapPositionA(float scale, const char* text, const c
     float line_width = 0.0f;
     float word_width = 0.0f;
     float blank_width = 0.0f;
-    wrap_width /= scale; // We work with unscaled widths to avoid scaling every characters
 
     const char* word_end = text;
     const char* prev_word_end = NULL;
@@ -1913,7 +1911,7 @@ const char* ImFont::CalcWordWrapPositionA(float scale, const char* text, const c
             }
         }
 
-        const float char_width = ((int)c < IndexXAdvance.Size ? IndexXAdvance[(int)c] : FallbackXAdvance);
+        const float char_width = ((int)c < IndexXAdvance.Size ? IndexXAdvance[(int)c] : FallbackXAdvance) * scale;
         if (ImCharIsSpace(c))
         {
             if (inside_word)
@@ -2052,6 +2050,15 @@ ImVec2 ImFont::CalcTextSizeA(float size, float max_width, float wrap_width, cons
     return text_size;
 }
 
+void ImFont::RenderGlyph(ImDrawList* draw_list, ImVec2 pos, ImU32 col, const ImFont::Glyph* glyph) const {
+    pos.x = (float)(int)pos.x + DisplayOffset.x;
+    pos.y = (float)(int)pos.y + DisplayOffset.y;
+    ImVec2 pos_tl(pos.x + glyph->X0, pos.y + glyph->Y0);
+    ImVec2 pos_br(pos.x + glyph->X1, pos.y + glyph->Y1);
+    draw_list->PrimReserve(6, 4);
+    draw_list->PrimRectUV(pos_tl, pos_br, ImVec2(glyph->U0, glyph->V0), ImVec2(glyph->U1, glyph->V1), col);
+}
+
 void ImFont::RenderChar(ImDrawList* draw_list, float size, ImVec2 pos, ImU32 col, unsigned short c) const
 {
     if (c == ' ' || c == '\t' || c == '\n' || c == '\r') // Match behavior of RenderText(), those 4 codepoints are hard-coded.
@@ -2061,8 +2068,10 @@ void ImFont::RenderChar(ImDrawList* draw_list, float size, ImVec2 pos, ImU32 col
         float scale = (size >= 0.0f) ? (size / FontSize) : 1.0f;
         pos.x = (float)(int)pos.x + DisplayOffset.x;
         pos.y = (float)(int)pos.y + DisplayOffset.y;
+        ImVec2 pos_tl(pos.x + glyph->X0 * scale, pos.y + glyph->Y0 * scale);
+        ImVec2 pos_br(pos.x + glyph->X1 * scale, pos.y + glyph->Y1 * scale);
         draw_list->PrimReserve(6, 4);
-        draw_list->PrimRectUV(ImVec2(pos.x + glyph->X0 * scale, pos.y + glyph->Y0 * scale), ImVec2(pos.x + glyph->X1 * scale, pos.y + glyph->Y1 * scale), ImVec2(glyph->U0, glyph->V0), ImVec2(glyph->U1, glyph->V1), col);
+        draw_list->PrimRectUV(pos_tl, pos_br, ImVec2(glyph->U0, glyph->V0), ImVec2(glyph->U1, glyph->V1), col);
     }
 }
 

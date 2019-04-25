@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{355BEEF8-E030-4084-9958-797F3EF1AB2E}</ProjectGuid>
     <RootNamespace>lfceditor</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -145,6 +145,7 @@
     <ClInclude Include="..\imgui\imgui.h" />
     <ClInclude Include="..\imgui\imgui_impl_glfw.h" />
     <ClInclude Include="..\imgui\imgui_internal.h" />
+    <ClInclude Include="..\imgui\imgui_user.h" />
     <ClInclude Include="Analyze.hpp" />
     <ClInclude Include="data\AudiCup.hpp" />
     <ClInclude Include="data\database.hpp" />
@@ -191,6 +192,7 @@
     <Font Include="..\fonts\msyh.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\imgui\imgui_user.inl" />
     <None Include="data.json" />
     <None Include="localization.json" />
   </ItemGroup>
