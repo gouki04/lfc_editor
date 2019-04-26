@@ -160,12 +160,12 @@ void ImGui::FixedColumnsV(int count, va_list args)
     ImGuiWindow* window = GetCurrentWindowRead();
     int columns_count = GetColumnsCount();
 
-    window->DC.ColumnsData[0].OffsetNorm = 0.0;
+    window->DC.CurrentColumns->Columns[0].OffsetNorm = 0.0;
     for (int column_index = 1; column_index < columns_count + 1; column_index++)
     {
         double t = va_arg(args, double);
-        window->DC.ColumnsData[column_index].OffsetNorm =
-            window->DC.ColumnsData[column_index - 1].OffsetNorm + t;
+        window->DC.CurrentColumns->Columns[column_index].OffsetNorm =
+            window->DC.CurrentColumns->Columns[column_index - 1].OffsetNorm + t;
     }
 }
 
@@ -176,7 +176,7 @@ void ImGui::ShowColumnsNorm()
 
     for (int column_index = 1; column_index < columns_count + 1; column_index++)
     {
-        ImGui::Text("%.2f", window->DC.ColumnsData[column_index].OffsetNorm - window->DC.ColumnsData[column_index - 1].OffsetNorm);
+        ImGui::Text("%.2f", window->DC.CurrentColumns->Columns[column_index].OffsetNorm - window->DC.CurrentColumns->Columns[column_index - 1].OffsetNorm);
         ImGui::NextColumn();
     }
 }

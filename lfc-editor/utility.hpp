@@ -6,6 +6,7 @@
 #include "data\FACup.hpp"
 #include "data\TwoMatch.hpp"
 #include "TopNTable.hpp"
+#include "GLFW\glfw3.h"
 
 using namespace lfc;
 
@@ -418,7 +419,7 @@ namespace ImGui
         ImGui::SameLine();
         if (goal) {
             if (goal == global_db.selected_goal) {
-                ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
+                ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(255, 255, 0, 255));
                 ImGui::Button("E", ImVec2(-1, 0));
                 ImGui::PopStyleColor(1);
             }
@@ -452,7 +453,7 @@ namespace ImGui
         ImGui::SameLine();
         if (match) {
             if (match == global_db.selected_match) {
-                ImGui::PushStyleColor(ImGuiCol_Button, ImColor(255, 255, 0));
+                ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(255, 255, 0, 255));
                 ImGui::Button("E", ImVec2(-1, 0));
                 ImGui::PopStyleColor(1);
             }
