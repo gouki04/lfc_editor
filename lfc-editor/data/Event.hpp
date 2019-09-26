@@ -39,6 +39,12 @@ namespace lfc
         // 欧联
         UEFAEuropaLeague = 9,
 
+        // 社区盾
+        CommunityShield = 10,
+
+        // 欧洲超级杯
+        UEFASuperCup = 11,
+
         EVENT_MAX,
     };
 

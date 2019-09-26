@@ -146,6 +146,15 @@
     <ClInclude Include="..\imgui\imgui_impl_opengl2.h">
       <Filter>imgui</Filter>
     </ClInclude>
+    <ClInclude Include="data\CommunityShield.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\UEFASuperCup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
+    <ClInclude Include="data\FIFAClubWorldCup.hpp">
+      <Filter>data\event</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

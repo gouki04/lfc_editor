@@ -12,6 +12,8 @@
 #include "data\UEFAEuropaLeague.hpp"
 #include "data\FriendlyMatch.hpp"
 #include "data\PremierLeague.hpp"
+#include "data\CommunityShield.hpp"
+#include "data\UEFASuperCup.hpp"
 
 static void ShowEventListWindow(bool* p_open)
 {
@@ -80,6 +82,12 @@ static void ShowEventListWindow(bool* p_open)
                 break;
             case lfc::EEventType::UEFAEuropaLeague:
                 evt = std::make_shared<UEFAEuropaLeague>();
+                break;
+            case lfc::EEventType::CommunityShield:
+                evt = std::make_shared<CommunityShield>();
+                break;
+            case lfc::EEventType::UEFASuperCup:
+                evt = std::make_shared<UEFASuperCup>();
                 break;
             default:
                 break;
@@ -414,6 +422,24 @@ static void ShowEventListWindow(bool* p_open)
             ImGui::PushID("final");
             ImGui::MatchButton(utf8("fianl"), &icc->final);
             ImGui::PopID();
+
+            ImGui::PopID();
+            break;
+        }
+        case lfc::EEventType::CommunityShield: {
+            auto com_shield = std::static_pointer_cast<CommunityShield>(event);
+            ImGui::PushID(com_shield.get());
+
+            ImGui::PushID(1); ImGui::MatchButton(utf8("final"), &(com_shield->final)); ImGui::PopID();
+
+            ImGui::PopID();
+            break;
+        }
+        case lfc::EEventType::UEFASuperCup: {
+            auto super_cup = std::static_pointer_cast<UEFASuperCup>(event);
+            ImGui::PushID(super_cup.get());
+
+            ImGui::PushID(1); ImGui::MatchButton(utf8("final"), &(super_cup->final)); ImGui::PopID();
 
             ImGui::PopID();
             break;

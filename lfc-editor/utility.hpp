@@ -57,6 +57,10 @@ namespace utility
             return "InternationalChampionsCup";
         case EEventType::UEFAEuropaLeague:
             return "UEFAEuropaLeague";
+        case EEventType::CommunityShield:
+            return "CommunityShield";
+        case EEventType::UEFASuperCup:
+            return "UEFASuperCup";
         default:
             break;
         }
@@ -253,7 +257,7 @@ namespace ImGui
 
     static void EEventEdit(const char *label, EEventType *val)
     {
-        ImGui::Combo(label, (int*)(val), "Any\0FriendlyMatch\0PremierLeague\0UEFAChampionsLeague\0PremierLeagueAsiaTrophy\0AudiCup\0EFLCup\0FACup\0InternationalChampionsCup\0UEFAEuropaLeague\0\0");
+        ImGui::Combo(label, (int*)(val), "Any\0FriendlyMatch\0PremierLeague\0UEFAChampionsLeague\0PremierLeagueAsiaTrophy\0AudiCup\0EFLCup\0FACup\0InternationalChampionsCup\0UEFAEuropaLeague\0CommunityShield\0UEFASuperCup\0\0");
     }
 
     static void ESideEdit(const char *label, EMatchSide *val)

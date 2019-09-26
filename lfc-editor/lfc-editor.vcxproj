@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{355BEEF8-E030-4084-9958-797F3EF1AB2E}</ProjectGuid>
     <RootNamespace>lfceditor</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -149,11 +149,13 @@
     <ClInclude Include="..\imgui\imgui_user.h" />
     <ClInclude Include="Analyze.hpp" />
     <ClInclude Include="data\AudiCup.hpp" />
+    <ClInclude Include="data\CommunityShield.hpp" />
     <ClInclude Include="data\database.hpp" />
     <ClInclude Include="data\Date.hpp" />
     <ClInclude Include="data\EFLCup.hpp" />
     <ClInclude Include="data\Event.hpp" />
     <ClInclude Include="data\FACup.hpp" />
+    <ClInclude Include="data\FIFAClubWorldCup.hpp" />
     <ClInclude Include="data\FootballClub.hpp" />
     <ClInclude Include="data\FriendlyMatch.hpp" />
     <ClInclude Include="data\Goal.hpp" />
@@ -189,6 +191,7 @@
     <ClCompile Include="..\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="..\imgui\imgui_impl_opengl2.cpp" />
     <ClCompile Include="..\imgui\imgui_widgets.cpp" />
+    <ClInclude Include="data\UEFASuperCup.hpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
